@@ -4,7 +4,7 @@ class Crystal : public KdGameObject
 {
 public:
 	Crystal() { Init(); }
-	~Crystal() override {}
+	~Crystal() noexcept override {}
 
 	void DrawLit()override;
 	void Update()override;

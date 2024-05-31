@@ -1,7 +1,7 @@
 ﻿#include "GameScene.h"
 #include "../SceneManager.h"
+#include "../../Object/GameObject/BackGround/BackGround.h"
 #include "../../Object/GameObject/Creature/Player/Player.h"
-#include "../../Object/GameObject/Destructible/Crystal/Crystal.h"
 #include "../../Data/BinaryAccessor.hpp"
 #include "../../Utility/UtilityDefault.hxx"
 
@@ -47,6 +47,6 @@ void GameScene::Init()
 	}
 
 	// Add Object
+	AddObjList<BackGround>();
 	AddObjList<Player>(m_wpPlayer);
-	AddObjList<Crystal>();
 }
