@@ -23,7 +23,6 @@ protected:
 
 	// Class Or Struct Value
 	std::shared_ptr<KdModelData> m_spModel;
-	std::string m_dataPath;
 
 	// Other Value
 	bool   m_isUse;

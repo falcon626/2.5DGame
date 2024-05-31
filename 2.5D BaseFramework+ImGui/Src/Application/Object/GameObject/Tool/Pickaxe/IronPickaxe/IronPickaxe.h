@@ -8,6 +8,6 @@ public:
 	~IronPickaxe() override {}
 
 	void Init() override;
-	void Use() override;
+
 private:
 };

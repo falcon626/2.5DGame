@@ -22,16 +22,30 @@ void GameScene::Init()
 	{
 		// Local Declaration
 		std::vector<float> parameter;
+		auto counter = Def::SizTNull;
 
-		// Load Initialization Value
-		//DATA.Load("Asset/Data/CameraParameter/Initial.dat", parameter);
+		{
+			// Load Initialization Value
+			const auto IsAssert = DATA.Load("Asset/Data/CameraParameter/Initial_Float.dat", parameter, counter);
+			_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+		}
 
+		// Set Value
+		m_cameraDeg   = parameter[--counter];
+		m_cameraPos.x = parameter[--counter];
+		m_cameraPos.y = parameter[--counter];
+		m_cameraPos.z = parameter[--counter];
+	}
+
+	{
 		//Initialization Camera
 		m_camera = std::make_unique<KdCamera>();
-		auto rollMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-		auto tranMat = Math::Matrix::CreateTranslation(0, 8.0f, 0);
-		m_camera->SetCameraMatrix((rollMat * tranMat));
+		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
+		auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
+		m_camera->SetCameraMatrix((rotMat * traMat));
+
 	}
+
 	// Add Object
 	AddObjList<Player>(m_wpPlayer);
 	AddObjList<Crystal>();

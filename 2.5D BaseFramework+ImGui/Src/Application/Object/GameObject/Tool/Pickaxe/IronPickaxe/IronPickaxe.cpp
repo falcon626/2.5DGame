@@ -1,16 +1,25 @@
 ﻿#include "IronPickaxe.h"
 #include "../../../../../Data/BinaryAccessor.hpp"
-#include "../../../../../Utility/UtilityKey.hxx"
+#include "../../../../../Utility/UtilityDefault.hxx"
 
 void IronPickaxe::Init()
 {
-	SetModel( TemplateModelPath + "pickaxe.gltf");
-	m_dataPath = TemplateDataPath + "IronParameter.dat";
-	BasePickaxe::Init();
-}
+	{
+		// Local Declaration
+		auto counter = Def::SizTNull;
+		std::vector<size_t> parameter;
+		{
+			// Load Initialization Value
+			const auto IsAssert = DATA.Load(TemplateDataPath + "Iron/Initial_Size_t.dat", parameter, counter);
+			_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+		}
+		m_swingPow     = parameter[--counter];
+		m_intervalTime = parameter[--counter];
+	}
 
-void IronPickaxe::Use()
-{
-	BasePickaxe::Use();
-	m_intervalTime = 30;
+	// Load Model
+	SetModel( TemplateModelPath + "pickaxe.gltf");
+
+	// Common Init
+	BasePickaxe::Init();
 }

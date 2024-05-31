@@ -5,7 +5,6 @@
 
 BasePickaxe::BasePickaxe() noexcept
 	: m_spModel(nullptr)
-	, m_dataPath("")
 	, m_isUse(false)
 	, m_intervalTime(Def::IntNull)
 	, m_swingPow(Def::IntNull)
@@ -18,6 +17,7 @@ BasePickaxe::BasePickaxe() noexcept
 	, m_swingFrame(Def::IntNull)
 	, m_rollDegX(Def::FloatNull)
 	, m_rollDegZ(Def::FloatNull)
+	, m_scale(Def::FloatNull)
 {}
 
 void BasePickaxe::Init()
