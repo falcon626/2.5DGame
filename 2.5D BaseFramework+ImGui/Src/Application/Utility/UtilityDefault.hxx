@@ -32,6 +32,16 @@ bool isName
 
 const ConstValue
 
+class = const
+
+enum = const
+
+enum = const
+
+struct = const
+
+structMember memberValue_
+
 matrix mMat
 
 pointer

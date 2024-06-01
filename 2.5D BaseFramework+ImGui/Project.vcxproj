@@ -159,6 +159,7 @@
     <ClInclude Include="Src\Application\Data\BinaryAccessor.hpp" />
     <ClInclude Include="Src\Application\main.h" />
     <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGround.h" />
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.h" />
     <ClInclude Include="Src\Application\Object\GameObject\Creature\Player\Player.h" />
     <ClInclude Include="Src\Application\Object\GameObject\Destructible\Crystal\Crystal.h" />
     <ClInclude Include="Src\Application\Object\GameObject\Destructible\Rock\Rock.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
     <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGround.cpp" />
+    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.cpp" />
     <ClCompile Include="Src\Application\Object\GameObject\Creature\Player\Player.cpp" />
     <ClCompile Include="Src\Application\Object\GameObject\Destructible\Crystal\Crystal.cpp" />
     <ClCompile Include="Src\Application\Object\GameObject\Destructible\Rock\Rock.cpp" />

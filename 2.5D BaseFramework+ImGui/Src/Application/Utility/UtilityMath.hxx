@@ -22,11 +22,11 @@ namespace Formula // Convenience Functions
 
 	namespace Collider // Prototype
 	{
-		typedef struct
+		typedef struct RayResult
 		{
-			bool isHit = false;
-			Math::Vector3 hitPos = Math::Vector3::Zero;
-		}RayResult, &R_RayResult;
+			bool isHit_ = false;
+			Math::Vector3 hitPos_ = Math::Vector3::Zero;
+		}&R_RayResult;
 
 		// KdGameObject Only Ray Function
 		void Ray(R_RayResult rayResult, 
@@ -52,8 +52,8 @@ namespace Formula // Convenience Functions
 				if (maxOverLap < ret.m_overlapDistance)
 				{
 					maxOverLap = ret.m_overlapDistance;
-					rayResult.hitPos = ret.m_hitPos;
-					rayResult.isHit = true;
+					rayResult.hitPos_ = ret.m_hitPos;
+					rayResult.isHit_ = true;
 				}
 			}
 		}

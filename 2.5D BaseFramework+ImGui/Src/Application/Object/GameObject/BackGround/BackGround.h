@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 class Crystal;
+class BackGroundRock;
 
 class BackGround :public KdGameObject
 {
@@ -15,17 +16,28 @@ public:
 	void Update()override;
 	void PostUpdate() override;
 private:
+
 	enum Surface
 	{
 		Top,
 		Bottom,
 		Front,
 		Back,
-		All
+		AllSurface
+	};
+
+	enum RockPattern
+	{
+		Fast,
+		Second,
+		Third,
+		AllPattern
 	};
 
 	void Init() override;
 
-	std::array<std::shared_ptr<KdSquarePolygon>, Surface::All> m_spPolygon;
-	std::shared_ptr<Crystal> m_upCrystal;
+	std::array<std::shared_ptr<KdSquarePolygon>, Surface::AllSurface> m_spPolygon;
+	std::array<Math::Matrix, Surface::AllSurface> m_mWorldPolygon;
+	std::shared_ptr<Crystal> m_spCrystal;
+	std::array<std::shared_ptr<BackGroundRock>, RockPattern::AllPattern> m_spRock;
 };

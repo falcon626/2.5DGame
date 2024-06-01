@@ -121,6 +121,9 @@
     <Filter Include="Src\Application\Object\GameObject\BackGround">
       <UniqueIdentifier>{f929bf3d-a5f1-4344-a46c-6ba48c59af1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\GameObject\BackGround\BackGroundRock">
+      <UniqueIdentifier>{c3d8a8c5-24f3-46fd-bc19-b0cf16fc054b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -333,6 +336,9 @@
     <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGround.h">
       <Filter>Src\Application\Object\GameObject\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.h">
+      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -505,6 +511,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGround.cpp">
       <Filter>Src\Application\Object\GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.cpp">
+      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

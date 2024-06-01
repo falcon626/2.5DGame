@@ -38,12 +38,13 @@ void GameScene::Init()
 	}
 
 	{
-		//Initialization Camera
+		// Initialization Camera
 		m_camera = std::make_unique<KdCamera>();
-		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
-		auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
+		//auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
+		auto rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(90));
+		auto traMat = Math::Matrix::CreateTranslation(-30,10,0);
+		//auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
 		m_camera->SetCameraMatrix((rotMat * traMat));
-
 	}
 
 	// Add Object

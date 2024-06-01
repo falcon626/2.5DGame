@@ -3,15 +3,15 @@
 
 void Player::Init()
 {
+	m_spPickaxe = std::make_shared<PickaxeManager>();
+	m_spModel = std::make_shared<KdModelData>();
 	{
-		m_spModel = std::make_shared<KdModelData>();
 		const auto IsAssert = m_spModel->Load("Asset/Models/Rail/cart.gltf");
 		_ASSERT_EXPR(IsAssert, L"ModelData Not Found");
 	}
 	m_mWorld *= Math::Matrix::CreateScale(3.0f);
 	m_mWorld *= Math::Matrix::CreateTranslation(-1.5f,0,0);
 
-	m_spPickaxe = std::make_shared<PickaxeManager>();
 	m_spPickaxe->Init();
 }
 
