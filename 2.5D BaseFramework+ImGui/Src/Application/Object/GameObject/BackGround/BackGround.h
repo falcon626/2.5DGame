@@ -28,9 +28,11 @@ private:
 
 	enum RockPattern
 	{
-		Fast,
+		First,
 		Second,
 		Third,
+		Fourth,
+		Fifth,
 		AllPattern
 	};
 

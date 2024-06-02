@@ -21,10 +21,13 @@ void BackGround::Init()
 			arr->SetPivot(KdSquarePolygon::PivotType::Center_Bottom);
 		}
 		for (decltype(auto) arr : m_spRock)
-		{
 			arr->Init();
-		}
 	}
+	m_spRock[RockPattern::First]->SetPos({-6,3,17});
+	m_spRock[RockPattern::Second]->SetPos({-1,4,18});
+	m_spRock[RockPattern::Third]->SetPos({4,0,15});
+	m_spRock[RockPattern::Fourth]->SetPos({6,0,7});
+	m_spRock[RockPattern::Fifth]->SetPos({-7,5,2});
 	auto mScale = Math::Matrix::CreateScale(30.00f);
 	auto mRotation = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(90));
 	m_mWorldPolygon[Surface::Top] = mScale * mRotation * Math::Matrix::CreateTranslation(0, 15, -15);
@@ -37,12 +40,16 @@ void BackGround::GenerateDepthMapFromLight()
 {
 	for (auto i = Def::SizTNull; i < m_spPolygon.size(); ++i)
 		KdShaderManager::Instance().m_StandardShader.DrawPolygon(*m_spPolygon[i], m_mWorldPolygon[i]);
+	//for (decltype(auto) arr : m_spRock)
+	//	arr->GenerateDepthMapFromLight();
 }
 
 void BackGround::DrawLit()
 {
 	for (auto i = Def::SizTNull; i < m_spPolygon.size(); ++i)
 		KdShaderManager::Instance().m_StandardShader.DrawPolygon(*m_spPolygon[i], m_mWorldPolygon[i]);
+	for (decltype(auto) arr : m_spRock)
+		arr->DrawLit();
 	m_spCrystal->DrawLit();
 }
 
