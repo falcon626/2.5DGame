@@ -17,7 +17,7 @@ namespace Formula // Convenience Functions
 			std::uniform_real_distribution<T> dist(min, max);
 			return dist(mt);
 		}
-		else static_assert(std::is_integral<T>::value || std::is_floating_point<T>::value, L"Not Number");
+		else static_assert(std::is_integral<T>::value || std::is_floating_point<T>::value, "Not Number");
 	}
 
 	namespace Collider // Prototype

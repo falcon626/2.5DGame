@@ -11,6 +11,7 @@ void BackGroundRock::Init()
 		{
 		case RockType::YelSmooth:
 			path = "Rock/ImageToStl.com_rock_01.gltf";
+			SetScale(0.5f);
 			break;
 		case RockType::YelBumpy:
 			path = "Rock/ImageToStl.com_rocks_02.gltf";
@@ -32,6 +33,7 @@ void BackGroundRock::Init()
 			break;
 		case RockType::Crystal:
 			path = "Crystal/biggestblue/crystalexport.gltf";
+			SetScale(0.5f);
 			break;
 		default:
 			_ASSERT_EXPR(false, L"Incorrect Random Range");

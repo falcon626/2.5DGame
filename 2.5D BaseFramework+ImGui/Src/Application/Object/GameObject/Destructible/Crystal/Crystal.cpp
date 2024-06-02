@@ -8,7 +8,7 @@ void Crystal::Init()
 		_ASSERT_EXPR(IsAssert, L"ModelData Not Found");
 	}
 	SetScale(0.5f);
-	SetPos({0,2,8});
+	SetPos({0,1,8});
 }
 
 void Crystal::DrawLit()

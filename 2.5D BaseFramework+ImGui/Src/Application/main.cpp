@@ -360,18 +360,16 @@ void Application::ImGuiProcess()
 {
 	return;
 
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
+	//ImGui_ImplDX11_NewFrame();
+	//ImGui_ImplWin32_NewFrame();
+	//ImGui::NewFrame();
 
-	ImGui::ShowDemoWindow(nullptr);
+	//if (ImGui::Begin("Debug Window"))
+	//{
+	//	 ImGui::Text((const char*)u8"デバック");
+	//}
+	//ImGui::End();
 
-	if (ImGui::Begin("Debug Window"))
-	{
-		// ImGui::Text((const char*)u8"デバック");
-	}
-	ImGui::End();
-
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	//ImGui::Render();
+	//ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 }

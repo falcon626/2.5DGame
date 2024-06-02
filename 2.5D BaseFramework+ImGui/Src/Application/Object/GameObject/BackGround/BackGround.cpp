@@ -7,12 +7,17 @@
 void BackGround::Init()
 {
 	m_spPolygon.fill(std::make_shared<KdSquarePolygon>());
-	m_spRock.fill(std::make_shared<BackGroundRock>());
 	m_spCrystal = std::make_shared<Crystal>();
+	for (decltype(auto) arr : m_spRock)
+	{
+		arr = std::make_shared<BackGroundRock>();
+		arr->Init();
+	}
+
 	{
 		auto spMaterialTex = std::make_shared<KdTexture>();
 		{
-			const auto IsAssert = spMaterialTex->Load("Asset/Textures/BackGround/backGround.png");
+			const auto IsAssert = spMaterialTex->Load("Asset/Textures/BackGround/stone_00007.png");
 			_ASSERT_EXPR(IsAssert, L"MaterialData Not Found");
 		}
 		for (decltype(auto) arr : m_spPolygon)
@@ -20,14 +25,12 @@ void BackGround::Init()
 			arr->SetMaterial(spMaterialTex);
 			arr->SetPivot(KdSquarePolygon::PivotType::Center_Bottom);
 		}
-		for (decltype(auto) arr : m_spRock)
-			arr->Init();
 	}
-	m_spRock[RockPattern::First]->SetPos({-6,3,17});
-	m_spRock[RockPattern::Second]->SetPos({-1,4,18});
-	m_spRock[RockPattern::Third]->SetPos({4,0,15});
+	m_spRock[RockPattern::First]->SetPos({-6,3,16});
+	m_spRock[RockPattern::Second]->SetPos({-1,4,15});
+	m_spRock[RockPattern::Third]->SetPos({4,3,14});
 	m_spRock[RockPattern::Fourth]->SetPos({6,0,7});
-	m_spRock[RockPattern::Fifth]->SetPos({-7,5,2});
+	m_spRock[RockPattern::Fifth]->SetPos({-7,2,10});
 	auto mScale = Math::Matrix::CreateScale(30.00f);
 	auto mRotation = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(90));
 	m_mWorldPolygon[Surface::Top] = mScale * mRotation * Math::Matrix::CreateTranslation(0, 15, -15);
