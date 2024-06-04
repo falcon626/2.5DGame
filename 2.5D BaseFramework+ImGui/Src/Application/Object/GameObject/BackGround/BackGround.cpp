@@ -1,5 +1,4 @@
 ﻿#include "BackGround.h"
-#include "../Destructible/Crystal/Crystal.h"
 #include "BackGroundRock/BackGroundRock.h"
 #include "../../../Utility/UtilityDefault.hxx"
 
@@ -7,7 +6,7 @@
 void BackGround::Init()
 {
 	m_spPolygon.fill(std::make_shared<KdSquarePolygon>());
-	m_spCrystal = std::make_shared<Crystal>();
+
 	for (decltype(auto) arr : m_spRock)
 	{
 		arr = std::make_shared<BackGroundRock>();
@@ -26,11 +25,12 @@ void BackGround::Init()
 			arr->SetPivot(KdSquarePolygon::PivotType::Center_Bottom);
 		}
 	}
+
 	m_spRock[RockPattern::First]->SetPos({-6,3,16});
-	m_spRock[RockPattern::Second]->SetPos({-1,4,15});
+	m_spRock[RockPattern::Second]->SetPos({-3,7,15});
 	m_spRock[RockPattern::Third]->SetPos({4,3,14});
 	m_spRock[RockPattern::Fourth]->SetPos({6,0,7});
-	m_spRock[RockPattern::Fifth]->SetPos({-7,2,10});
+	m_spRock[RockPattern::Fifth]->SetPos({-5,2,7});
 	auto mScale = Math::Matrix::CreateScale(30.00f);
 	auto mRotation = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(90));
 	m_mWorldPolygon[Surface::Top] = mScale * mRotation * Math::Matrix::CreateTranslation(0, 15, -15);
@@ -43,8 +43,8 @@ void BackGround::GenerateDepthMapFromLight()
 {
 	for (auto i = Def::SizTNull; i < m_spPolygon.size(); ++i)
 		KdShaderManager::Instance().m_StandardShader.DrawPolygon(*m_spPolygon[i], m_mWorldPolygon[i]);
-	//for (decltype(auto) arr : m_spRock)
-	//	arr->GenerateDepthMapFromLight();
+	for (decltype(auto) arr : m_spRock)
+		arr->GenerateDepthMapFromLight();
 }
 
 void BackGround::DrawLit()
@@ -53,7 +53,6 @@ void BackGround::DrawLit()
 		KdShaderManager::Instance().m_StandardShader.DrawPolygon(*m_spPolygon[i], m_mWorldPolygon[i]);
 	for (decltype(auto) arr : m_spRock)
 		arr->DrawLit();
-	m_spCrystal->DrawLit();
 }
 
 void BackGround::DrawBright()
@@ -66,7 +65,6 @@ void BackGround::PreUpdate()
 
 void BackGround::Update()
 {
-	m_spCrystal->Update();
 }
 
 void BackGround::PostUpdate()

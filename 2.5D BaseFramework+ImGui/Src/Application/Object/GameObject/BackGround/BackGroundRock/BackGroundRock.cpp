@@ -7,11 +7,11 @@ void BackGroundRock::Init()
 	m_spModel = std::make_shared<KdModelData>();
 	{
 		std::string path;
-		switch (Formula::Rand(static_cast<int>(RockType::YelSmooth), static_cast<int>(RockType::Crystal)))
+		switch (Formula::Rand(static_cast<size_t>(RockType::YelSmooth), static_cast<size_t>(RockType::Crystal)))
 		{
 		case RockType::YelSmooth:
 			path = "Rock/ImageToStl.com_rock_01.gltf";
-			SetScale(0.5f);
+			SetScale(0.08f);
 			break;
 		case RockType::YelBumpy:
 			path = "Rock/ImageToStl.com_rocks_02.gltf";
@@ -27,6 +27,7 @@ void BackGroundRock::Init()
 			break;
 		case RockType::GraProtrusion:
 			path = "Rock/Rock_04.gltf";
+			SetScale(0.75f);
 			break;
 		case RockType::GraFlat:
 			path = "Rock/Rock_05.gltf";

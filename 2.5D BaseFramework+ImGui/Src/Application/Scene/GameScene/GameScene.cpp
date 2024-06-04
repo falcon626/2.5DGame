@@ -1,6 +1,7 @@
 ﻿#include "GameScene.h"
 #include "../SceneManager.h"
 #include "../../Object/GameObject/BackGround/BackGround.h"
+#include "../../Object/GameObject/Destructible/Crystal/Crystal.h"
 #include "../../Object/GameObject/Creature/Player/Player.h"
 #include "../../Data/BinaryAccessor.hpp"
 #include "../../Utility/UtilityDefault.hxx"
@@ -16,17 +17,43 @@ void GameScene::Event()
 			SceneManager::SceneType::Title
 		);
 	}
-	if (Key::IsPushing(Key::Left))
+	if (Key::IsPushing(Key::Up))
 	{
 		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
 		auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
 		m_camera->SetCameraMatrix((rotMat * traMat));
 	}
-	if (Key::IsPushing(Key::Right))
+	if (Key::IsPushing(Key::Left))
 	{
 		auto rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(90));
 		auto traMat = Math::Matrix::CreateTranslation(-30,10,0);
 		m_camera->SetCameraMatrix((rotMat * traMat));
+	}
+	if (Key::IsPushing(Key::Right))
+	{
+		auto rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(270));
+		auto traMat = Math::Matrix::CreateTranslation(30, 10, 0);
+		m_camera->SetCameraMatrix((rotMat * traMat));
+	}
+	static Math::Vector3 pos = m_cameraPos;
+	if (Key::IsPushing(Key::A))
+	{
+		pos.x -= 0.5f;
+		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
+		auto traMat = Math::Matrix::CreateTranslation(pos);
+		m_camera->SetCameraMatrix((rotMat * traMat));
+	}
+
+	if (Key::IsPushing(Key::D))
+	{
+		pos.x += 0.5f;
+		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
+		auto traMat = Math::Matrix::CreateTranslation(pos);
+		m_camera->SetCameraMatrix((rotMat * traMat));
+	}
+	if (Key::IsPushing(Key::Q))
+	{
+		AddObjList<BackGround>();
 	}
 }
 
@@ -53,8 +80,6 @@ void GameScene::Init()
 	{
 		// Initialization Camera
 		m_camera = std::make_unique<KdCamera>();
-		//auto rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(90));
-		//auto traMat = Math::Matrix::CreateTranslation(-30,10,0);
 		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
 		auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
 		m_camera->SetCameraMatrix((rotMat * traMat));
@@ -62,5 +87,6 @@ void GameScene::Init()
 
 	// Add Object
 	AddObjList<BackGround>();
+	AddObjList<Crystal>();
 	AddObjList<Player>(m_wpPlayer);
 }

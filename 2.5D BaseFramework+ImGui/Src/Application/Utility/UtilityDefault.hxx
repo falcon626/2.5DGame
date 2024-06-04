@@ -36,9 +36,7 @@ class = const
 
 enum = const
 
-enum = const
-
-struct = const
+struct tagStruct
 
 structMember memberValue_
 

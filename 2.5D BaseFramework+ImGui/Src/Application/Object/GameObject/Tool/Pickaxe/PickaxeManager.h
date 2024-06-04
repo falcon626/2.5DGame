@@ -5,8 +5,8 @@ class BasePickaxe;
 class PickaxeManager
 {
 public:
-	PickaxeManager() = default;
-	~PickaxeManager() = default;
+	PickaxeManager()  noexcept = default;
+	~PickaxeManager() noexcept = default;
 
 	enum class PickaxeType
 	{
@@ -14,7 +14,7 @@ public:
 		Gold,
 		Diamond
 	};
-	void Init(){ ChangeType(m_nowPickaxeType); };
+	void Init() noexcept { ChangeType(m_nowPickaxeType); };
 
 	void GenerateDepthMapFromLight();
 	void DrawLit();
@@ -26,6 +26,6 @@ private:
 	void ChangeType(PickaxeType type);
 
 	std::shared_ptr<BasePickaxe> m_spPickaxe;
-	PickaxeType m_nowPickaxeType = PickaxeType::Iron;
+	PickaxeType m_nowPickaxeType  = PickaxeType::Iron;
 	PickaxeType m_nextPickaxeType = m_nowPickaxeType;
 };

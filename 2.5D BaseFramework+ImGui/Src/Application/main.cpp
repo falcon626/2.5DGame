@@ -358,18 +358,18 @@ void Application::Release()
 
 void Application::ImGuiProcess()
 {
-	return;
+	//return;
 
-	//ImGui_ImplDX11_NewFrame();
-	//ImGui_ImplWin32_NewFrame();
-	//ImGui::NewFrame();
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
 
-	//if (ImGui::Begin("Debug Window"))
-	//{
-	//	 ImGui::Text((const char*)u8"デバック");
-	//}
-	//ImGui::End();
+	if (ImGui::Begin("Debug Window"))
+	{
+		 ImGui::Text("FPS: %d", GetNowFPS());
+	}
+	ImGui::End();
 
-	//ImGui::Render();
-	//ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 }
