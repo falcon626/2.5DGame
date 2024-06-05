@@ -68,20 +68,25 @@ namespace Formula // Convenience Functions
 				Math::Vector3 hitDir_ = Math::Vector3::Zero;
 			}SphereResult, &R_SphereResult;
 		}Result;
+
+		class ArgumentClass;
 		
 		// KdGameObject Only Ray Function
 		auto Ray(Result::R_RayResult rayResult, 
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const Math::Vector3& rayDirection,  const KdCollider::Type& hitType, 
 			const Math::Vector3& startPos,      const float& rayLength, 
-			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL) noexcept
+			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL,
+			const bool& isSetMaxLength = false, const float& maxLength      = NULL,
+			const std::shared_ptr<ArgumentClass>& spThat = nullptr) noexcept
 		{
 			KdCollider::RayInfo rayInfo;
 			rayInfo.m_pos     = startPos;
 			rayInfo.m_dir     = rayDirection;
 			rayInfo.m_pos    += correctionPos;
 			rayInfo.m_pos.y  += enableStepHigh;
-			rayInfo.m_range   = rayLength + enableStepHigh;
+			rayInfo.m_range   = rayLength + enableStepHigh + correctionPos.y;
+			if (isSetMaxLength && maxLength < rayInfo.m_range) rayInfo.m_range = maxLength;
 			rayInfo.m_type    = hitType;
 
 			rayResult.isHit_  = false;
@@ -89,8 +94,10 @@ namespace Formula // Convenience Functions
 
 			std::list<KdCollider::CollisionResult> retRayList;
 			for (decltype(auto) obj : objList)
+			{
+				if (obj == spThat) continue;
 				obj->Intersects(rayInfo, &retRayList);
-
+			}
 			float maxOverLap = NULL;
 			for (decltype(auto) ret : retRayList)
 			{
@@ -107,7 +114,8 @@ namespace Formula // Convenience Functions
 		auto Sphere(Result::R_SphereResult sphereResult,
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
-			const float& sphereRadius,       const Math::Vector3& correctionPos) noexcept
+			const float& sphereRadius,       const Math::Vector3& correctionPos,
+			const std::shared_ptr<ArgumentClass>& spThat = nullptr) noexcept
 		{
 			KdCollider::SphereInfo sphereInfo;
 			sphereInfo.m_sphere.Center = centerPos + correctionPos;
@@ -119,8 +127,10 @@ namespace Formula // Convenience Functions
 
 			std::list<KdCollider::CollisionResult> retSphereList;
 			for (decltype(auto) obj : objList)
+			{
+				if (obj == spThat) continue;
 				obj->Intersects(sphereInfo, &retSphereList);
-
+			}
 			float maxOverLap = NULL;
 			for (decltype(auto) ret : retSphereList)
 			{

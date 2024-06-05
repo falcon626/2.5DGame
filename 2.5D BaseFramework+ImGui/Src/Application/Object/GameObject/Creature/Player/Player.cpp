@@ -1,5 +1,6 @@
 ﻿#include "Player.h"
 #include "../../Tool/Pickaxe/PickaxeManager.h"
+#include "../../../../Utility/UtilityKey.hxx"
 
 void Player::Init()
 {
@@ -35,6 +36,8 @@ void Player::PreUpdate()
 void Player::Update()
 {
 	m_spPickaxe->Update();
+	if (Key::IsPushing(Key::E))
+		m_spPickaxe->SetNextPickaxe(PickaxeManager::PickaxeType::Gold);
 }
 
 void Player::PostUpdate()

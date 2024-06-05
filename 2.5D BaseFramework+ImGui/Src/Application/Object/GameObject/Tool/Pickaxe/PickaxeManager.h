@@ -22,6 +22,8 @@ public:
 	void Update();
 	void PostUpdate();
 
+	void SetNextPickaxe(PickaxeType nextType) noexcept { m_nextPickaxeType = nextType; }
+
 private:
 	void ChangeType(PickaxeType type);
 

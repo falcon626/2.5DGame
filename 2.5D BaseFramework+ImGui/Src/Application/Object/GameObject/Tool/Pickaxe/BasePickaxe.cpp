@@ -50,7 +50,7 @@ void BasePickaxe::Init()
 	m_mWorld    = m_mScale * m_mRotation * m_mTrans;
 }
 
-void BasePickaxe::SetModel(const std::string_view path) noexcept
+void BasePickaxe::SetModel(const std::string_view& path) noexcept
 {
 	m_spModel            = std::make_shared<KdModelData>();
 	const auto IsAssert = m_spModel->Load(path);

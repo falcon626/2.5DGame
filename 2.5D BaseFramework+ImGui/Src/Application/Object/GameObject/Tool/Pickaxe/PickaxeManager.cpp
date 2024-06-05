@@ -6,25 +6,21 @@
 
 void PickaxeManager::GenerateDepthMapFromLight()
 {
-	if (!m_spPickaxe)return;
 	m_spPickaxe->GenerateDepthMapFromLight();
 }
 
 void PickaxeManager::DrawLit()
 {
-	if (!m_spPickaxe)return;
 	m_spPickaxe->DrawLit();
 }
 
 void PickaxeManager::PreUpdate()
 {
-	if (!m_spPickaxe)return;
 	if (m_nowPickaxeType != m_nextPickaxeType) ChangeType(m_nextPickaxeType);
 }
 
 void PickaxeManager::Update()
 {
-	if (!m_spPickaxe)return;
 	m_spPickaxe->Use();
 	m_spPickaxe->Update();
 }

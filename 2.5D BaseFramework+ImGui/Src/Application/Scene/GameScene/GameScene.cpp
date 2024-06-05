@@ -53,7 +53,7 @@ void GameScene::Event()
 	}
 	if (Key::IsPushing(Key::Q))
 	{
-		AddObjList<BackGround>();
+		AddObjList<Crystal>();
 	}
 }
 

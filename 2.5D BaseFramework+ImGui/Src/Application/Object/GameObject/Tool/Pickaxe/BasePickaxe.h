@@ -15,7 +15,7 @@ public:
 
 protected:
 	// Not Virtual Function
-	void SetModel(const std::string_view path) noexcept;
+	void SetModel(const std::string_view& path) noexcept;
 
 	// Constan Value
 	const std::string TemplateDataPath  = "Asset/Data/PickaxeParameter/";
