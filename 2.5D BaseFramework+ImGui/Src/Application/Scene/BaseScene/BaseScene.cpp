@@ -1,4 +1,5 @@
 ﻿#include "BaseScene.h"
+#include "../../Data/ResourceManager.h"
 
 void BaseScene::PreUpdate()
 {

@@ -1,5 +1,7 @@
 ﻿#include "SceneManager.h"
 
+#include "../Data/ResourceManager.h"
+
 #include "BaseScene/BaseScene.h"
 #include "GameScene/GameScene.h"
 #include "TitleScene/TitleScene.h"
@@ -67,6 +69,8 @@ void SceneManager::ChangeScene(SceneType _sceneType)
 		m_currentScene = std::make_shared<GameScene>();
 		break;
 	}
+
+	RESOURCE.ReleaseUnusedResources();
 
 	// 現在のシーン情報を更新
 	m_currentSceneType = _sceneType;

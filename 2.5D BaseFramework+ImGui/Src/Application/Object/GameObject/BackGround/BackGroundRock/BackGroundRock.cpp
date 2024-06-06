@@ -1,6 +1,7 @@
 ﻿#include "BackGroundRock.h"
 #include "../../../../Utility/UtilityMath.hxx"
 #include "../../../../Utility/UtilityDefault.hxx"
+#include "../../../../Data/ResourceManager.h"
 
 void BackGroundRock::Init()
 {
@@ -40,8 +41,7 @@ void BackGroundRock::Init()
 			_ASSERT_EXPR(false, L"Incorrect Random Range");
 			break;
 		}
-		const auto IsAssert = m_spModel->Load("Asset/Models/" + path);
-		_ASSERT_EXPR(IsAssert, L"ModelData Not Found");
+		m_spModel = RESOURCE.IndexModelData(path);
 	}
 }
 

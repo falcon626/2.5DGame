@@ -4,6 +4,7 @@
 #include "../../Object/GameObject/Destructible/Crystal/Crystal.h"
 #include "../../Object/GameObject/Creature/Player/Player.h"
 #include "../../Data/BinaryAccessor.hpp"
+#include "../../Data/ResourceManager.h"
 #include "../../Utility/UtilityDefault.hxx"
 #include "../../Utility/UtilityKey.hxx"
 
@@ -53,12 +54,13 @@ void GameScene::Event()
 	}
 	if (Key::IsPushing(Key::Q))
 	{
-		AddObjList<Crystal>();
+		AddObjList<BackGround>();
 	}
 }
 
 void GameScene::Init()
 {
+	LoadResources();
 	{
 		// Local Declaration
 		std::vector<float> parameter;
@@ -89,4 +91,21 @@ void GameScene::Init()
 	AddObjList<BackGround>();
 	AddObjList<Crystal>();
 	AddObjList<Player>(m_wpPlayer);
+}
+
+void GameScene::LoadResources()
+{
+	RESOURCE.PreLoadModelsData({
+		"Pickaxe/pickaxe.gltf",
+		"Rail/cart.gltf",
+		"Crystal/purple/crystals.gltf",
+		"Rock/ImageToStl.com_rock_01.gltf",
+		"Rock/ImageToStl.com_rocks_02.gltf",
+		"Rock/Rock_01.gltf",
+		"Rock/Rock_02.gltf",
+		"Rock/Rock_03.gltf",
+		"Rock/Rock_04.gltf",
+		"Rock/Rock_05.gltf",
+		"Crystal/biggestblue/crystalexport.gltf"
+		});
 }

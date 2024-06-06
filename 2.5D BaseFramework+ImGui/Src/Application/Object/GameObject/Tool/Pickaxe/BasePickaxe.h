@@ -19,7 +19,7 @@ protected:
 
 	// Constan Value
 	const std::string TemplateDataPath  = "Asset/Data/PickaxeParameter/";
-	const std::string TemplateModelPath = "Asset/Models/Pickaxe/";
+	const std::string TemplateModelPath = "Pickaxe/";
 
 	// Class Or Struct Value
 	std::shared_ptr<KdModelData> m_spModel;

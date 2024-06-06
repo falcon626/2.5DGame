@@ -15,6 +15,8 @@ private:
 	void Event() override;
 	void Init() override;
 
+	void LoadResources() override;
+
 	Math::Vector3 m_cameraPos;
 	float m_cameraDeg;
 

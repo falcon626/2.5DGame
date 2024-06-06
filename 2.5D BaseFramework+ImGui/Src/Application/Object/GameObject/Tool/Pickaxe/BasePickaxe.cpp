@@ -2,6 +2,8 @@
 #include "../../../../Utility/UtilityDefault.hxx"
 #include "../../../../Utility/UtilityKey.hxx"
 #include "../../../../Data/BinaryAccessor.hpp"
+#include "../../../../Data/ResourceManager.h"
+
 
 BasePickaxe::BasePickaxe() noexcept
 	: m_spModel(nullptr)
@@ -52,9 +54,10 @@ void BasePickaxe::Init()
 
 void BasePickaxe::SetModel(const std::string_view& path) noexcept
 {
-	m_spModel            = std::make_shared<KdModelData>();
-	const auto IsAssert = m_spModel->Load(path);
-	_ASSERT_EXPR( IsAssert, L"ModelData Not Found");
+	std::string modelPath(path);
+	m_spModel = std::make_shared<KdModelData>();
+	m_spModel = RESOURCE.IndexModelData(modelPath);
+	if(!m_spModel) _ASSERT_EXPR( false, L"ModelData Empty");
 }
 
 void BasePickaxe::GenerateDepthMapFromLight()

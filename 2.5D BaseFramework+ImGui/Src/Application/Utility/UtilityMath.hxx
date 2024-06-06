@@ -68,8 +68,6 @@ namespace Formula // Convenience Functions
 				Math::Vector3 hitDir_ = Math::Vector3::Zero;
 			}SphereResult, &R_SphereResult;
 		}Result;
-
-		class ArgumentClass;
 		
 		// KdGameObject Only Ray Function
 		auto Ray(Result::R_RayResult rayResult, 
@@ -78,7 +76,7 @@ namespace Formula // Convenience Functions
 			const Math::Vector3& startPos,      const float& rayLength, 
 			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL,
 			const bool& isSetMaxLength = false, const float& maxLength      = NULL,
-			const std::shared_ptr<ArgumentClass>& spThat = nullptr) noexcept
+			const void* pThat = nullptr) noexcept
 		{
 			KdCollider::RayInfo rayInfo;
 			rayInfo.m_pos     = startPos;
@@ -95,7 +93,7 @@ namespace Formula // Convenience Functions
 			std::list<KdCollider::CollisionResult> retRayList;
 			for (decltype(auto) obj : objList)
 			{
-				if (obj == spThat) continue;
+				if (obj.get() == pThat) continue;
 				obj->Intersects(rayInfo, &retRayList);
 			}
 			float maxOverLap = NULL;
@@ -115,7 +113,7 @@ namespace Formula // Convenience Functions
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
 			const float& sphereRadius,       const Math::Vector3& correctionPos,
-			const std::shared_ptr<ArgumentClass>& spThat = nullptr) noexcept
+			const void* pThat = nullptr) noexcept
 		{
 			KdCollider::SphereInfo sphereInfo;
 			sphereInfo.m_sphere.Center = centerPos + correctionPos;
@@ -128,7 +126,7 @@ namespace Formula // Convenience Functions
 			std::list<KdCollider::CollisionResult> retSphereList;
 			for (decltype(auto) obj : objList)
 			{
-				if (obj == spThat) continue;
+				if (obj.get() == pThat) continue;
 				obj->Intersects(sphereInfo, &retSphereList);
 			}
 			float maxOverLap = NULL;

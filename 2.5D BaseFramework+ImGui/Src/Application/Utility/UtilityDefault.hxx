@@ -47,6 +47,8 @@ struct tagStruct
 
 structMember memberValue_
 
+struct = union
+
 matrix mMat
 
 pointer
