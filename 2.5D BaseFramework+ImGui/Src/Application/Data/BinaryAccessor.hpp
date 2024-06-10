@@ -55,7 +55,7 @@ public:
 
 private:
 	// Singleton Class
-	BinaryAccessor()  noexcept = default;
+	BinaryAccessor () noexcept = default;
 	~BinaryAccessor() noexcept = default;
 };
 

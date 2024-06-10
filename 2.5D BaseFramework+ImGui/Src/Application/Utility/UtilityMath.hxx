@@ -54,7 +54,7 @@ namespace Formula // Convenience Functions
 
 	namespace Collider // So Deep Nest
 	{
-		typedef union tagResult
+		typedef union _tagResult
 		{
 			typedef struct tagRayResult
 			{
@@ -113,7 +113,7 @@ namespace Formula // Convenience Functions
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
 			const float& sphereRadius,       const Math::Vector3& correctionPos,
-			const void* pThat = nullptr) noexcept
+			const void*  pThat = nullptr) noexcept
 		{
 			KdCollider::SphereInfo sphereInfo;
 			sphereInfo.m_sphere.Center = centerPos + correctionPos;

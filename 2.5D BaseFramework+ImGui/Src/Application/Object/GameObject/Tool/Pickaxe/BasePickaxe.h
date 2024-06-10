@@ -1,28 +1,22 @@
 ﻿#pragma once
+#include "../../../../Object/BaseExtensionObject/BaseExtensionObject.h"
 
-class BasePickaxe :public KdGameObject
+class BasePickaxe :public BaseExtensionObject
 {
 public:
 	BasePickaxe() noexcept ;
 	virtual ~BasePickaxe() noexcept override = default;
 
 	virtual void Init() override;
-	virtual void GenerateDepthMapFromLight() override;
-	virtual void DrawLit() override;
 	virtual void Update() override;
 	virtual void PostUpdate() override;
 	virtual void Use();
 
 protected:
-	// Not Virtual Function
-	void SetModel(const std::string_view& path) noexcept;
 
 	// Constan Value
 	const std::string TemplateDataPath  = "Asset/Data/PickaxeParameter/";
 	const std::string TemplateModelPath = "Pickaxe/";
-
-	// Class Or Struct Value
-	std::shared_ptr<KdModelData> m_spModel;
 
 	// Other Value
 	bool   m_isUse;

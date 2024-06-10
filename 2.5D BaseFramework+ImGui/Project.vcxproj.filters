@@ -148,6 +148,9 @@
     <Filter Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth">
       <UniqueIdentifier>{7138f8b7-e62b-4456-997a-b94e4d6741ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\BaseExtensionObject">
+      <UniqueIdentifier>{afb19c67-9c80-4166-9891-bb01b537b913}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -357,31 +360,28 @@
     <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGround.h">
       <Filter>Src\Application\Object\GameObject\BackGround</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.h">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy\YellowBumpy.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy\YellowBumpy.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth\YellowSmooth.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth\YellowSmooth.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering\GrayTowering.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering\GrayTowering.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GraySlanted\GraySlanted.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GraySlanted\GraySlanted.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GraySlanted</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayProtrusion\GrayProtrusion.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayProtrusion\GrayProtrusion.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayProtrusion</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BlueCrystal\BlueCrystal.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BlueCrystal\BlueCrystal.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\BlueCrystal</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayHeavy\GrayHeavy.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayHeavy\GrayHeavy.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayHeavy</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayFlat\GrayFlat.h">
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayFlat\GrayFlat.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayFlat</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Data\BinaryAccessor.hpp">
@@ -389,6 +389,9 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Data\ResourceManager.h">
       <Filter>Src\Application\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.h">
+      <Filter>Src\Application\Object\BaseExtensionObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -563,35 +566,11 @@
     <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGround.cpp">
       <Filter>Src\Application\Object\GameObject\BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRock.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy\YellowBumpy.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth\YellowSmooth.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering\GrayTowering.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GraySlanted\GraySlanted.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GraySlanted</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayProtrusion\GrayProtrusino.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayProtrusion</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayHeavy\GrayHeavy.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayHeavy</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BlueCrystal\BlueCrystal.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\BlueCrystal</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayFlat\GrayFlat.cpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayFlat</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Data\ResourceManager.cpp">
       <Filter>Src\Application\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.cpp">
+      <Filter>Src\Application\Object\BaseExtensionObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

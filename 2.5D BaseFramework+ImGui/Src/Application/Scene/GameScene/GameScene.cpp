@@ -64,7 +64,7 @@ void GameScene::Init()
 	{
 		// Local Declaration
 		std::vector<float> parameter;
-		auto counter = Def::SizTNull;
+		auto counter(Def::SizTNull);
 
 		{
 			// Load Initialization Value
@@ -81,7 +81,7 @@ void GameScene::Init()
 
 	{
 		// Initialization Camera
-		m_camera = std::make_unique<KdCamera>();
+		m_camera    = std::make_unique<KdCamera>();
 		auto rotMat = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
 		auto traMat = Math::Matrix::CreateTranslation(m_cameraPos);
 		m_camera->SetCameraMatrix((rotMat * traMat));

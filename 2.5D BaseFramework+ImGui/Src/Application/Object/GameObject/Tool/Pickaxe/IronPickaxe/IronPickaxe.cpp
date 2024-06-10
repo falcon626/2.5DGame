@@ -6,7 +6,7 @@ void IronPickaxe::Init()
 {
 	{
 		// Local Declaration
-		auto counter = Def::SizTNull;
+		auto counter(Def::SizTNull);
 		std::vector<size_t> parameter;
 
 		{
@@ -21,7 +21,7 @@ void IronPickaxe::Init()
 	}
 
 	// Load Model
-	SetModel( TemplateModelPath + "pickaxe.gltf");
+	SetModelData( TemplateModelPath + "pickaxe.gltf");
 
 	// Common Init
 	BasePickaxe::Init();

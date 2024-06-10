@@ -2,5 +2,5 @@
 
 void DiamondPickaxe::Init()
 {
-	SetModel("Asset/Models/pickaxe/diamond.gltf");
+	SetModelData("Asset/Models/pickaxe/diamond.gltf");
 }

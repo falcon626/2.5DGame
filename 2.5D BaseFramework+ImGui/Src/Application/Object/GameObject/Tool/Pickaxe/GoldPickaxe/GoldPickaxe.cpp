@@ -2,5 +2,5 @@
 
 void GoldPickaxe::Init()
 {
-	SetModel("Asset/Models/pickaxe/gold.gltf");
+	SetModelData("Asset/Models/pickaxe/gold.gltf");
 }

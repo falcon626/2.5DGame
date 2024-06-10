@@ -6,8 +6,7 @@
 
 
 BasePickaxe::BasePickaxe() noexcept
-	: m_spModel(nullptr)
-	, m_isUse(false)
+	: m_isUse(false)
 	, m_intervalTime(Def::IntNull)
 	, m_swingPow(Def::IntNull)
 	, m_swingSpeed(Def::IntNull)
@@ -50,24 +49,6 @@ void BasePickaxe::Init()
 	m_mTrans    = Math::Matrix::CreateTranslation(m_pos);
 	m_mScale    = Math::Matrix::CreateScale(m_scale);
 	m_mWorld    = m_mScale * m_mRotation * m_mTrans;
-}
-
-void BasePickaxe::SetModel(const std::string_view& path) noexcept
-{
-	std::string modelPath(path);
-	m_spModel = std::make_shared<KdModelData>();
-	m_spModel = RESOURCE.IndexModelData(modelPath);
-	if(!m_spModel) _ASSERT_EXPR( false, L"ModelData Empty");
-}
-
-void BasePickaxe::GenerateDepthMapFromLight()
-{
-	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
-}
-
-void BasePickaxe::DrawLit()
-{
-	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
 }
 
 void BasePickaxe::Update()

@@ -47,7 +47,7 @@ struct tagStruct
 
 structMember memberValue_
 
-struct = union
+union _tagUnion
 
 matrix mMat
 
