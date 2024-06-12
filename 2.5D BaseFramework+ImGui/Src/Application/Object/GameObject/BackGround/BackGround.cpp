@@ -8,6 +8,7 @@
 #include "BackGroundRock/YellowBumpy/YellowBumpy.hpp"
 #include "BackGroundRock/YellowSmooth/YellowSmooth.hpp"
 #include "../../../Utility/UtilityDefault.hxx"
+#include "../../../Data/BinaryAccessor.hpp"
 
 
 void BackGround::Init()
@@ -28,45 +29,6 @@ void BackGround::Init()
 		yeBu = std::make_shared<YellowBumpy>();
 	for (decltype(auto) yeSm : m_spYellowSmooth)
 		yeSm = std::make_shared<YellowSmooth>();
-	auto elementCount(Def::SizTNull);
-	m_spBlueCrystal[elementCount]->SetPos({ 8,0,15 });
-	m_spBlueCrystal[elementCount]->SetScale(0.7f);
-	++elementCount;
-	m_spBlueCrystal[elementCount]->SetPos({ 0,0,15 });
-	m_spBlueCrystal[elementCount]->SetScale(0.7f);
-	++elementCount;
-	m_spBlueCrystal[elementCount]->SetPos({ 4,0,15 });
-	m_spBlueCrystal[elementCount]->SetScale(0.7f);
-	elementCount = Def::SizTNull;
-	m_spYellowSmooth[elementCount]->SetPos({ 0,0,4 });
-	m_spYellowSmooth[elementCount]->SetScale(0.2f);
-	++elementCount;
-	m_spYellowSmooth[elementCount]->SetPos({ 0,0,4 });
-	m_spYellowSmooth[elementCount]->SetScale(0.2f);
-	++elementCount;
-	m_spYellowSmooth[elementCount]->SetPos({ 0,0,4 });
-	m_spYellowSmooth[elementCount]->SetScale(0.2f);
-	elementCount = Def::SizTNull;
-	m_spGrayFlat[elementCount]->SetPos({ -4,-2,10 });
-	m_spGrayFlat[elementCount]->SetScale(1.0f);
-	++elementCount;
-	m_spGrayFlat[elementCount]->SetPos({ 4,-2,10 });
-	m_spGrayFlat[elementCount]->SetScale(1.0f);
-	++elementCount;
-	m_spGrayFlat[elementCount]->SetPos({ 0,-12,8 });
-	m_spGrayFlat[elementCount]->SetScale(5.0f);
-	elementCount = Def::SizTNull;
-	m_spGrayTowering[elementCount]->SetPos({ -4,0,20 });
-	m_spGrayTowering[elementCount]->SetScale(1.0f);
-	++elementCount;
-	m_spGrayTowering[elementCount]->SetPos({ 2,1,20 });
-	m_spGrayTowering[elementCount]->SetScale(1.0f);
-	++elementCount;
-	m_spGrayTowering[elementCount]->SetPos({ -7,0,10 });
-	m_spGrayTowering[elementCount]->SetScale(1.0f);
-	++elementCount;
-	m_spGrayTowering[elementCount]->SetPos({ -7,0,10 });
-	m_spGrayTowering[elementCount]->SetScale(1.0f);
 	
 	//m_spPolygon.fill(std::make_shared<KdSquarePolygon>());
 	//{
@@ -93,6 +55,101 @@ void BackGround::Init()
 	//m_mWorldPolygon[Surface::Bottom] = mScale * mRotation * Math::Matrix::CreateTranslation(0, 0, -15);
 	//m_mWorldPolygon[Surface::Front] = mScale * Math::Matrix::CreateTranslation(0, 0, 15);
 	//m_mWorldPolygon[Surface::Back] = mScale * Math::Matrix::CreateTranslation(0, 0, -15);
+}
+
+void BackGround::SetObjectPosition()
+{
+	std::vector<float>  parameter;
+	auto counter  (Def::SizTNull);
+	auto stageZeroPoint(GetPos());
+	{
+		const auto IsAssert = DATA.Load("Asset/Data/RocksParameter/Initial_Float.dat", parameter, counter);
+		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+	}
+	SetObjectProperties(m_spBlueCrystal,    parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayFlat,       parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayHeavy,      parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayProtrusion, parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGraySlanted,    parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayTowering,   parameter, counter, stageZeroPoint);
+
+	//m_spBlueCrystal[elementCount]->SetPos({8.0f, 1.0f, 15.0f});
+	//m_spBlueCrystal[elementCount]->SetScale(0.60f);
+	//++elementCount;
+	//m_spBlueCrystal[elementCount]->SetPos({ 0,-1,15 });
+	//m_spBlueCrystal[elementCount]->SetScale(0.7f);
+	//++elementCount;
+	//m_spBlueCrystal[elementCount]->SetPos({ 4,0,16 });
+	//m_spBlueCrystal[elementCount]->SetScale(0.7f);
+	//elementCount = Def::SizTNull;
+	//m_spGrayFlat[elementCount]->SetPos({ -4,-2,10 });
+	//m_spGrayFlat[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayFlat[elementCount]->SetPos({ 0,-12,0 });
+	//m_spGrayFlat[elementCount]->SetScale(5.0f);
+	//++elementCount;
+	//m_spGrayFlat[elementCount]->SetPos({ 0,-12,8 });
+	//m_spGrayFlat[elementCount]->SetScale(5.0f);
+	//elementCount = Def::SizTNull;
+	//m_spGrayHeavy[elementCount]->SetPos({ 3,0,16 });
+	//m_spGrayHeavy[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayHeavy[elementCount]->SetPos({ 5,0,13 });
+	//m_spGrayHeavy[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayHeavy[elementCount]->SetPos({ 7,1,15 });
+	//m_spGrayHeavy[elementCount]->SetScale(1.0f);
+	//elementCount = Def::SizTNull;
+	//m_spGrayProtrusion[elementCount]->SetPos({ 10,0,13 });
+	//m_spGrayProtrusion[elementCount]->SetScale(1.5f);
+	//++elementCount;
+	//m_spGrayProtrusion[elementCount]->SetPos({ 10,0,9 });
+	//m_spGrayProtrusion[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayProtrusion[elementCount]->SetPos({ 10,0,5 });
+	//m_spGrayProtrusion[elementCount]->SetScale(1.0f);
+	//elementCount = Def::SizTNull;
+	//m_spGraySlanted[elementCount]->SetPos({ -7,3,18 });
+	//m_spGraySlanted[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGraySlanted[elementCount]->SetPos({ -7,1,18 });
+	//m_spGraySlanted[elementCount]->SetScale(1.0f);
+	//elementCount = Def::SizTNull;
+	//m_spGrayTowering[elementCount]->SetPos({ -4,0,20 });
+	//m_spGrayTowering[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayTowering[elementCount]->SetPos({ 2.3f,-2,20 });
+	//m_spGrayTowering[elementCount]->SetScale(1.2f);
+	//++elementCount;
+	//m_spGrayTowering[elementCount]->SetPos({ -2,0,20 });
+	//m_spGrayTowering[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayTowering[elementCount]->SetPos({ -5,0,20 });
+	//m_spGrayTowering[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayTowering[elementCount]->SetPos({ -7,0,10 });
+	//m_spGrayTowering[elementCount]->SetScale(1.0f);
+	//++elementCount;
+	//m_spGrayTowering[elementCount]->SetPos({ -7,0,15 });
+	//m_spGrayTowering[elementCount]->SetScale(1.0f);
+	//elementCount = Def::SizTNull;
+}
+
+void BackGround::SetPos(const Math::Vector3& stageZeroPoint) noexcept
+{
+	m_mWorld.Translation(stageZeroPoint);
+	std::vector<float>  parameter;
+	auto counter  (Def::SizTNull);
+	{
+		const auto IsAssert = DATA.Load("Asset/Data/RocksParameter/Initial_Float.dat", parameter, counter);
+		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+	}
+	SetObjectProperties(m_spBlueCrystal,    parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayFlat,       parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayHeavy,      parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayProtrusion, parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGraySlanted,    parameter, counter, stageZeroPoint);
+	SetObjectProperties(m_spGrayTowering,   parameter, counter, stageZeroPoint);
 }
 
 void BackGround::GenerateDepthMapFromLight()

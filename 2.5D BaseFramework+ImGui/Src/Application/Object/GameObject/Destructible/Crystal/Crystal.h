@@ -1,12 +1,12 @@
 ﻿#pragma once
+#include "../../../BaseExtensionObject/BaseExtensionObject.h"
 
-class Crystal : public KdGameObject
+class Crystal : public BaseExtensionObject
 {
 public:
 	Crystal() { Init(); }
 	~Crystal() noexcept override {}
 
-	void DrawLit()override;
 	void Update()override;
 
 private:

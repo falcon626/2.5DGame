@@ -102,7 +102,7 @@ namespace Formula // Convenience Functions
 				if (maxOverLap < ret.m_overlapDistance)
 				{
 					maxOverLap = ret.m_overlapDistance;
-					rayResult.isHit_ = true;
+					rayResult.isHit_  = true;
 					rayResult.hitPos_ = ret.m_hitPos;
 				}
 			}
@@ -113,14 +113,14 @@ namespace Formula // Convenience Functions
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
 			const float& sphereRadius,       const Math::Vector3& correctionPos,
-			const void*  pThat = nullptr) noexcept
+			const void* pThat = nullptr) noexcept
 		{
 			KdCollider::SphereInfo sphereInfo;
 			sphereInfo.m_sphere.Center = centerPos + correctionPos;
 			sphereInfo.m_sphere.Radius = sphereRadius;
-			sphereInfo.m_type = hitType;
+			sphereInfo.m_type          = hitType;
 
-			sphereResult.isHit_ = false;
+			sphereResult.isHit_  = false;
 			sphereResult.hitDir_ = Math::Vector3::Zero;
 
 			std::list<KdCollider::CollisionResult> retSphereList;

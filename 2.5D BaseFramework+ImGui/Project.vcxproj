@@ -183,6 +183,7 @@
     <ClInclude Include="Src\Application\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Src\Application\Scene\SceneManager.h" />
     <ClInclude Include="Src\Application\Scene\TitleScene\TitleScene.h" />
+    <ClInclude Include="Src\Application\System\Timer.h" />
     <ClInclude Include="Src\Application\Utility\UtilityDefault.hxx" />
     <ClInclude Include="Src\Application\Utility\UtilityKey.hxx" />
     <ClInclude Include="Src\Application\Utility\UtilityMath.hxx" />
@@ -249,6 +250,7 @@
     <ClCompile Include="Src\Application\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Src\Application\Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="Src\Application\System\Timer.cpp" />
     <ClCompile Include="Src\Framework\Direct3D\KdMaterial.cpp">
       <SubType>
       </SubType>

@@ -8,7 +8,7 @@ void IronPickaxe::Init()
 		// Local Declaration
 		auto counter(Def::SizTNull);
 		std::vector<size_t> parameter;
-
+		
 		{
 			// Load Initialization Value
 			const auto IsAssert = DATA.Load(TemplateDataPath + "Iron/Initial_Size_t.dat", parameter, counter);

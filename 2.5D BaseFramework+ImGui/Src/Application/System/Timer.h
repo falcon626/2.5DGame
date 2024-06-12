@@ -1,19 +1,20 @@
 ﻿#pragma once
+
 class Timer
 {
 public:
     Timer () noexcept : m_isRunning(false) {}
 	~Timer() noexcept = default;
 
-    void Start();
+    void Start() noexcept;
 
-    void Stop();
+    void Stop() noexcept;
 
-    void Restart();
+    void Restart() noexcept;
 
-    void Resume();
+    void Resume() noexcept;
 
-    int ElapsedSeconds();
+    size_t const ElapsedSeconds() const noexcept;
 
 private:
     std::chrono::steady_clock::time_point m_startTime;

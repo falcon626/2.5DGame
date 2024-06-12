@@ -54,7 +54,13 @@ void GameScene::Event()
 	}
 	if (Key::IsPushing(Key::Q))
 	{
-		AddObjList<BackGround>();
+		for (auto i(Def::SizTNull); i < static_cast<size_t>(10); ++i)
+		{
+			auto backGround = std::make_shared<BackGround>();
+			backGround->SetPos({ static_cast<float>(i) * 20, 10, 5 });
+			backGround->SetObjectPosition();
+			m_objList.push_back(backGround);
+		}
 	}
 }
 
@@ -64,10 +70,10 @@ void GameScene::Init()
 	{
 		// Local Declaration
 		std::vector<float> parameter;
-		auto counter(Def::SizTNull);
+		auto counter (Def::SizTNull);
 
 		{
-			// Load Initialization Value
+			// Load Camera Initialization Value
 			const auto IsAssert = DATA.Load("Asset/Data/CameraParameter/Initial_Float.dat", parameter, counter);
 			_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
 		}
@@ -77,6 +83,24 @@ void GameScene::Init()
 		m_cameraPos.x = parameter[--counter];
 		m_cameraPos.y = parameter[--counter];
 		m_cameraPos.z = parameter[--counter];
+
+		{
+			// Load BackGround Initialization Value
+			const auto IsAssert = DATA.Load("Asset/Data/BackGroundParameter/Initial_Float.dat", parameter, counter);
+			_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+		}
+
+		auto stageMax(parameter[--counter]);
+		auto x       (parameter[--counter]);
+		auto y       (parameter[--counter]);
+		auto z       (parameter[--counter]);
+
+		for (auto i(Def::SizTNull); i < static_cast<size_t>(stageMax); ++i)
+		{
+			auto backGround = std::make_shared<BackGround>();
+			backGround->SetPos({ static_cast<float>(i) * x, y, z });
+			m_objList.push_back(backGround);
+		}
 	}
 
 	{
@@ -88,7 +112,6 @@ void GameScene::Init()
 	}
 
 	// Add Object
-	AddObjList<BackGround>();
 	AddObjList<Crystal>();
 	AddObjList<Player>(m_wpPlayer);
 }

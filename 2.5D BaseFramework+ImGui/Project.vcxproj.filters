@@ -151,6 +151,9 @@
     <Filter Include="Src\Application\Object\BaseExtensionObject">
       <UniqueIdentifier>{afb19c67-9c80-4166-9891-bb01b537b913}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\System">
+      <UniqueIdentifier>{572d0965-eace-489e-b507-4063b632a74d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -393,6 +396,9 @@
     <ClInclude Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.h">
       <Filter>Src\Application\Object\BaseExtensionObject</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\System\Timer.h">
+      <Filter>Src\Application\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -571,6 +577,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.cpp">
       <Filter>Src\Application\Object\BaseExtensionObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\System\Timer.cpp">
+      <Filter>Src\Application\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

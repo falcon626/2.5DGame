@@ -15,14 +15,18 @@ public:
 	BackGround() { Init(); }
 	~BackGround() noexcept override = default;
 
+	void SetObjectPosition();
+	void SetPos(const Math::Vector3& stageZeroPoint) noexcept;
+	
 	void GenerateDepthMapFromLight() override;
 	void DrawLit() override;
 	void DrawBright() override;
 	void PreUpdate() override;
 	void Update() override;
 	void PostUpdate() override;
+
 private:
-#define CAST_SIZE_T static_cast<size_t>
+
 	typedef union _tagBackRock
 	{
 		enum class BlueCrystal
@@ -61,7 +65,6 @@ private:
 		{
 			One,
 			Two,
-			Three,
 			All
 		};
 
@@ -93,14 +96,34 @@ private:
 		};
 	}BackRock;
 
-	std::array<std::shared_ptr<BlueCrystal>,    CAST_SIZE_T(BackRock::BlueCrystal::All)>    m_spBlueCrystal;
-	std::array<std::shared_ptr<GrayFlat>,       CAST_SIZE_T(BackRock::GrayFlat::All)>       m_spGrayFlat;
-	std::array<std::shared_ptr<GrayHeavy>,      CAST_SIZE_T(BackRock::GrayHeavy::All)>      m_spGrayHeavy;
-	std::array<std::shared_ptr<GrayProtrusion>, CAST_SIZE_T(BackRock::GrayProtrusion::All)> m_spGrayProtrusion;
-	std::array<std::shared_ptr<GraySlanted>,    CAST_SIZE_T(BackRock::GraySlanted::All)>    m_spGraySlanted;
-	std::array<std::shared_ptr<GrayTowering>,   CAST_SIZE_T(BackRock::GrayTowering::All)>   m_spGrayTowering;
-	std::array<std::shared_ptr<YellowBumpy>,    CAST_SIZE_T(BackRock::YellowBumpy::All)>    m_spYellowBumpy;
-	std::array<std::shared_ptr<YellowSmooth>,   CAST_SIZE_T(BackRock::YellowSmooth::All) >  m_spYellowSmooth;
+	std::array<std::shared_ptr<BlueCrystal>,    static_cast<size_t>(BackRock::BlueCrystal::All)>    m_spBlueCrystal;
+	std::array<std::shared_ptr<GrayFlat>,       static_cast<size_t>(BackRock::GrayFlat::All)>       m_spGrayFlat;
+	std::array<std::shared_ptr<GrayHeavy>,      static_cast<size_t>(BackRock::GrayHeavy::All)>      m_spGrayHeavy;
+	std::array<std::shared_ptr<GrayProtrusion>, static_cast<size_t>(BackRock::GrayProtrusion::All)> m_spGrayProtrusion;
+	std::array<std::shared_ptr<GraySlanted>,    static_cast<size_t>(BackRock::GraySlanted::All)>    m_spGraySlanted;
+	std::array<std::shared_ptr<GrayTowering>,   static_cast<size_t>(BackRock::GrayTowering::All)>   m_spGrayTowering;
+	std::array<std::shared_ptr<YellowBumpy>,    static_cast<size_t>(BackRock::YellowBumpy::All)>    m_spYellowBumpy;
+	std::array<std::shared_ptr<YellowSmooth>,   static_cast<size_t>(BackRock::YellowSmooth::All) >  m_spYellowSmooth;
+
+	template<typename T, size_t N>
+	inline auto SetObjectProperties(const std::array<std::shared_ptr<T>, N>& objects, 
+		const std::vector<float>& parameters, size_t& counter, 
+		const Math::Vector3& stageZeroPoint)
+	{
+		Math::Vector3 pos;
+		float scale;
+		for (decltype(auto) obj : objects)
+		{
+			pos.x = parameters[--counter];
+			pos.y = parameters[--counter];
+			pos.z = parameters[--counter];
+			scale = parameters[--counter];
+
+			obj->SetPos(pos + stageZeroPoint);
+			obj->SetScale(scale);
+		}
+	}
 
 	void Init() override;
+
 };

@@ -367,6 +367,7 @@ void Application::ImGuiProcess()
 	if (ImGui::Begin("Debug Window"))
 	{
 		 ImGui::Text("FPS: %d", GetNowFPS());
+		 ImGui::Text("ObjSiz: %d", SceneManager::Instance().GetObjList().size());
 	}
 	ImGui::End();
 
