@@ -6,26 +6,22 @@
 
 
 BasePickaxe::BasePickaxe() noexcept
-	: m_isUse(false)
-	, m_intervalTime(Def::IntNull)
-	, m_swingPow(Def::IntNull)
-	, m_swingSpeed(Def::IntNull)
-	, m_mScale(Def::Mat)
-	, m_mRotation(Def::Mat)
-	, m_mTrans(Def::Mat)
-	, m_pos(Def::Vec)
-	, m_swingTime(Def::IntNull)
-	, m_swingFrame(Def::IntNull)
-	, m_rollDegX(Def::FloatNull)
-	, m_rollDegZ(Def::FloatNull)
-	, m_scale(Def::FloatNull)
+	: m_isUse       (false)
+	, m_intervalTime(Def::SizTNull)
+	, m_swingPow    (Def::SizTNull)
+	, m_swingSpeed  (Def::FloatNull)
+	, m_swingTime   (Def::SizTNull)
+	, m_swingFrame  (Def::SizTNull)
+	, m_rollDegX    (Def::FloatNull)
+	, m_rollDegZ    (Def::FloatNull)
+	, m_scale       (Def::FloatNull)
 {}
 
 void BasePickaxe::Init()
 {
 	{
 		// Local Declaration
-		auto counter = Def::SizTNull;
+		auto counter (Def::SizTNull);
 		std::vector<float> parameter;
 
 		{
@@ -45,9 +41,9 @@ void BasePickaxe::Init()
 	}
 
 	// Set Object
+	m_mScale    = Math::Matrix::CreateScale(m_scale);
 	m_mRotation = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_rollDegX));
 	m_mTrans    = Math::Matrix::CreateTranslation(m_pos);
-	m_mScale    = Math::Matrix::CreateScale(m_scale);
 	m_mWorld    = m_mScale * m_mRotation * m_mTrans;
 }
 
@@ -60,14 +56,19 @@ void BasePickaxe::Update()
 	++m_swingFrame;
 }
 
-void BasePickaxe::PostUpdate()
+void BasePickaxe::Use() noexcept
 {
-	m_mWorld = m_mScale * m_mRotation * m_mTrans;
+	if ((!(Key::IsPushing(Key::L_Click)) && !(Key::IsPushing(Key::Q))) || m_isUse) return;
+	m_isUse      = true;
+	m_swingFrame = Def::SizTNull;
 }
 
-void BasePickaxe::Use()
+bool const BasePickaxe::IsUsing() const noexcept
 {
-	if (!(Key::IsPushing(Key::L_Click)) || m_isUse) return;
-	m_isUse = true;
-	m_swingFrame = Def::IntNull;
+	return m_isUse;
+}
+
+size_t const BasePickaxe::SwingPow() const noexcept
+{
+	return m_swingPow;
 }

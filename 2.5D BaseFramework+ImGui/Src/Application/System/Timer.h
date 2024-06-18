@@ -14,7 +14,7 @@ public:
 
     void Resume() noexcept;
 
-    size_t const ElapsedSeconds() const noexcept;
+    long long const ElapsedSeconds() const noexcept;
 
 private:
     std::chrono::steady_clock::time_point m_startTime;

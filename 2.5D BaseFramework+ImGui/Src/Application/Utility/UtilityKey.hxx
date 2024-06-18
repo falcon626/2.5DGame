@@ -2,6 +2,7 @@
 
 namespace Key // Recommended To Use
 {
+	static thread_local auto _flg(false);
 	enum Code // Usable Key
 	{
 		Constant = 0x8000,

@@ -43,14 +43,18 @@ protected :
 	std::list<std::shared_ptr<KdGameObject>> m_objList;
 
 	// Add ObjctList Function (Emplace_Back)
-	template <typename T, typename... Args>
-	void AddObjList(Args&&... args) 
-	{ m_objList.emplace_back(std::make_shared<T>(std::forward<Args>(args)...)); }
+	template <class T, typename... Args>
+	inline auto AddObjList(Args&&... args) 
+	{
+		static_assert(std::is_base_of<KdGameObject, T>::value, "T Must Be Derived From KdGameObject");
+		m_objList.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
+	}
 
 	// Add ObjctList And Create WeakPtr Function (Push_Back)
-	template <typename _T, typename... _Args>
-	void AddObjList(std::weak_ptr<_T>& wpObj ,_Args&&... args)
+	template <class _T, typename... _Args>
+	inline auto AddObjList(std::weak_ptr<_T>& wpObj ,_Args&&... args)
 	{
+		static_assert(std::is_base_of<KdGameObject, _T>::value, "_T Must Be Derived From KdGameObject");
 		auto obj = std::make_shared<_T>(std::forward<_Args>(args)...);
 		wpObj = obj;
 		m_objList.push_back(obj);

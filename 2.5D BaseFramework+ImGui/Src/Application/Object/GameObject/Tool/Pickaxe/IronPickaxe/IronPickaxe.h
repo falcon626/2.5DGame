@@ -4,10 +4,9 @@
 class IronPickaxe : public BasePickaxe
 {
 public:
-	IronPickaxe() {}
-	~IronPickaxe() override {}
+	IronPickaxe () noexcept = default;
+	~IronPickaxe() noexcept override = default;
 
 	void Init() override;
-
 private:
 };

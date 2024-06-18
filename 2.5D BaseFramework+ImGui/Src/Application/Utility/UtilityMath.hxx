@@ -3,7 +3,8 @@
 namespace Formula // Convenience Functions
 {
 	template<typename T>
-	decltype(auto) Rand(const T& min, const T& max) noexcept
+	[[nodiscard(L"No Random Return Value")]] decltype(auto) Rand
+	(const T& min, const T& max) noexcept
 	{
 		static thread_local std::random_device rd;
 		static thread_local std::mt19937 mt(rd());
@@ -22,13 +23,14 @@ namespace Formula // Convenience Functions
 	}
 
 	template<typename _T>
-	decltype(auto) Rand(const _T& min, const _T& max, const std::initializer_list<_T>& exclusion) noexcept
+	[[nodiscard(L"No Random Return Value")]] decltype(auto) Rand
+	(const _T& min, const _T& max, const std::initializer_list<_T>& exclusion) noexcept
 	{
 		static thread_local std::random_device rd;
 		static thread_local std::mt19937 mt(rd());
-
+		
 		// Exclusion Check Function (Lambda)
-		auto isExcluded = [&exclusion](const _T& value) 
+		auto isExcluded = [&exclusion](const _T& value)
 		{ return std::find(exclusion.begin(), exclusion.end(), value) != exclusion.end(); };
 
 		if constexpr (std::is_integral<_T>::value)
@@ -70,7 +72,7 @@ namespace Formula // Convenience Functions
 		}Result;
 		
 		// KdGameObject Only Ray Function
-		auto Ray(Result::R_RayResult rayResult, 
+		static auto Ray(Result::R_RayResult rayResult, 
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const Math::Vector3& rayDirection,  const KdCollider::Type& hitType, 
 			const Math::Vector3& startPos,      const float& rayLength, 
@@ -96,7 +98,8 @@ namespace Formula // Convenience Functions
 				if (obj.get() == pThat) continue;
 				obj->Intersects(rayInfo, &retRayList);
 			}
-			float maxOverLap = NULL;
+
+			float maxOverLap(NULL);
 			for (decltype(auto) ret : retRayList)
 			{
 				if (maxOverLap < ret.m_overlapDistance)
@@ -108,8 +111,22 @@ namespace Formula // Convenience Functions
 			}
 		}
 
+		// Assignment RayInfo
+		static auto Ray(KdCollider::RayInfo& rayInfoResult,
+			const Math::Vector3& rayDirection, const KdCollider::Type& hitType,
+			const Math::Vector3& startPos, const float& rayLength,
+			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL) noexcept
+		{
+			rayInfoResult.m_pos    = startPos;
+			rayInfoResult.m_dir    = rayDirection;
+			rayInfoResult.m_pos   += correctionPos;
+			rayInfoResult.m_pos.y += enableStepHigh;
+			rayInfoResult.m_range  = rayLength + enableStepHigh + correctionPos.y;
+			rayInfoResult.m_type   = hitType;
+		}
+
 		// KdGameObject Only Sphere Function
-		auto Sphere(Result::R_SphereResult sphereResult,
+		static auto Sphere(Result::R_SphereResult sphereResult,
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
 			const float& sphereRadius,       const Math::Vector3& correctionPos,
@@ -129,7 +146,8 @@ namespace Formula // Convenience Functions
 				if (obj.get() == pThat) continue;
 				obj->Intersects(sphereInfo, &retSphereList);
 			}
-			float maxOverLap = NULL;
+
+			float maxOverLap(NULL);
 			for (decltype(auto) ret : retSphereList)
 			{
 				if (maxOverLap < ret.m_overlapDistance)
@@ -139,6 +157,16 @@ namespace Formula // Convenience Functions
 					sphereResult.hitDir_ = ret.m_hitDir;
 				}
 			}
+		}
+
+		// Assignment SphereInfo
+		static auto Sphere(KdCollider::SphereInfo& sphereInfo,
+			const KdCollider::Type& hitType, const Math::Vector3& centerPos,
+			const float& sphereRadius, const Math::Vector3& correctionPos) noexcept
+		{
+			sphereInfo.m_sphere.Center = centerPos + correctionPos;
+			sphereInfo.m_sphere.Radius = sphereRadius;
+			sphereInfo.m_type          = hitType;
 		}
 	} // Name Space Collider
 } // Name Space Formula

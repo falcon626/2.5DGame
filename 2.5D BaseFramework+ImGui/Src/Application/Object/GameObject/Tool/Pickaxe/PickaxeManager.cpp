@@ -4,33 +4,52 @@
 #include "GoldPickaxe/GoldPickaxe.h"
 #include "DiamondPickaxe/DiamondPickaxe.h"
 
-void PickaxeManager::GenerateDepthMapFromLight()
+void PickaxeManager::GenerateDepthMapFromLight() noexcept
 {
 	m_spPickaxe->GenerateDepthMapFromLight();
 }
 
-void PickaxeManager::DrawLit()
+void PickaxeManager::DrawLit() noexcept
 {
 	m_spPickaxe->DrawLit();
 }
 
-void PickaxeManager::PreUpdate()
+void PickaxeManager::PreUpdate() noexcept
 {
 	if (m_nowPickaxeType != m_nextPickaxeType) ChangeType(m_nextPickaxeType);
 }
 
-void PickaxeManager::Update()
+void PickaxeManager::Update() noexcept
 {
-	m_spPickaxe->Use();
 	m_spPickaxe->Update();
 }
 
-void PickaxeManager::PostUpdate()
+void PickaxeManager::PostUpdate() noexcept
 {
 	m_spPickaxe->PostUpdate();
 }
 
-void PickaxeManager::ChangeType(PickaxeType type)
+void PickaxeManager::SetPos(const Math::Vector3& playerZeroPoint) noexcept
+{
+	m_spPickaxe->SetPos(playerZeroPoint);
+}
+
+void PickaxeManager::Use() noexcept
+{
+	m_spPickaxe->Use();
+}
+
+bool const PickaxeManager::IsUsing() const noexcept
+{
+	return m_spPickaxe->IsUsing();
+}
+
+size_t const PickaxeManager::SwingPow() const noexcept
+{
+	return m_spPickaxe->SwingPow();
+}
+
+void PickaxeManager::ChangeType(PickaxeType type) noexcept
 {
 	switch (type)
 	{

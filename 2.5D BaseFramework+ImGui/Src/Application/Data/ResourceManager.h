@@ -24,7 +24,7 @@ public:
 	static auto& Instance() noexcept { static ResourceManager instance; return instance; }
 private:
 	// Singleton Class
-	ResourceManager()  noexcept = default;
+	ResourceManager () noexcept = default;
 	~ResourceManager() noexcept = default;
 
 	std::unordered_map<std::string, std::shared_ptr<KdModelData>> m_models;

@@ -142,17 +142,23 @@
     <Filter Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering">
       <UniqueIdentifier>{62de48a4-5619-4212-9680-90a0785310ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy">
-      <UniqueIdentifier>{e883ea45-c98a-4fee-bc65-ff40d0c2b201}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth">
-      <UniqueIdentifier>{7138f8b7-e62b-4456-997a-b94e4d6741ac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\BaseExtensionObject">
       <UniqueIdentifier>{afb19c67-9c80-4166-9891-bb01b537b913}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\System">
       <UniqueIdentifier>{572d0965-eace-489e-b507-4063b632a74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\Stage">
+      <UniqueIdentifier>{a1d1a6fb-ca15-4554-b2a3-bf060b45d880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\Tool\Cart">
+      <UniqueIdentifier>{a2d10552-be7b-4ef9-b9a8-0be24f1f3ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi">
+      <UniqueIdentifier>{4affe9bb-292e-4899-acb8-cf7a1344e112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\Coin">
+      <UniqueIdentifier>{418db5d3-944a-4369-9fd1-44739b59687a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -363,12 +369,6 @@
     <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGround.h">
       <Filter>Src\Application\Object\GameObject\BackGround</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy\YellowBumpy.hpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowBumpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth\YellowSmooth.hpp">
-      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\YellowSmooth</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering\GrayTowering.hpp">
       <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock\GrayTowering</Filter>
     </ClInclude>
@@ -398,6 +398,21 @@
     </ClInclude>
     <ClInclude Include="Src\Application\System\Timer.h">
       <Filter>Src\Application\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\Stage\Stage.h">
+      <Filter>Src\Application\Object\GameObject\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\Tool\Cart\Cart.h">
+      <Filter>Src\Application\Object\GameObject\Tool\Cart</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\GameUi.h">
+      <Filter>Src\Application\Object\GameObject\GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\Destructible\BaseDestructible.h">
+      <Filter>Src\Application\Object\GameObject\Destructible</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\Coin\Coin.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\Coin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -580,6 +595,21 @@
     </ClCompile>
     <ClCompile Include="Src\Application\System\Timer.cpp">
       <Filter>Src\Application\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\Stage\Stage.cpp">
+      <Filter>Src\Application\Object\GameObject\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\Tool\Cart\Cart.cpp">
+      <Filter>Src\Application\Object\GameObject\Tool\Cart</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\GameUi.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\Destructible\BaseDestructible.cpp">
+      <Filter>Src\Application\Object\GameObject\Destructible</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\Coin\Coin.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\Coin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

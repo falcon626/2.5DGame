@@ -6,24 +6,21 @@ class GrayHeavy;
 class GrayProtrusion;
 class GraySlanted;
 class GrayTowering;
-class YellowBumpy;
-class YellowSmooth;
 
 class BackGround : public KdGameObject
 {
 public:
-	BackGround() { Init(); }
+	BackGround () noexcept { Init(); }
 	~BackGround() noexcept override = default;
 
-	void SetObjectPosition();
-	void SetPos(const Math::Vector3& stageZeroPoint) noexcept;
-	
 	void GenerateDepthMapFromLight() override;
-	void DrawLit() override;
+	void DrawLit()    override;
 	void DrawBright() override;
-	void PreUpdate() override;
-	void Update() override;
-	void PostUpdate() override;
+	void Update()     override;
+
+	void KillExistence() noexcept { m_isExpired = true; }
+
+	void SetPos(const Math::Vector3& stageZeroPoint) override;
 
 private:
 
@@ -78,22 +75,6 @@ private:
 			Six,
 			All
 		};
-
-		enum class YellowBumpy
-		{
-			One,
-			Two,
-			Three,
-			All
-		};
-
-		enum class YellowSmooth
-		{
-			One,
-			Two,
-			Three,
-			All
-		};
 	}BackRock;
 
 	std::array<std::shared_ptr<BlueCrystal>,    static_cast<size_t>(BackRock::BlueCrystal::All)>    m_spBlueCrystal;
@@ -102,9 +83,7 @@ private:
 	std::array<std::shared_ptr<GrayProtrusion>, static_cast<size_t>(BackRock::GrayProtrusion::All)> m_spGrayProtrusion;
 	std::array<std::shared_ptr<GraySlanted>,    static_cast<size_t>(BackRock::GraySlanted::All)>    m_spGraySlanted;
 	std::array<std::shared_ptr<GrayTowering>,   static_cast<size_t>(BackRock::GrayTowering::All)>   m_spGrayTowering;
-	std::array<std::shared_ptr<YellowBumpy>,    static_cast<size_t>(BackRock::YellowBumpy::All)>    m_spYellowBumpy;
-	std::array<std::shared_ptr<YellowSmooth>,   static_cast<size_t>(BackRock::YellowSmooth::All) >  m_spYellowSmooth;
-
+	
 	template<typename T, size_t N>
 	inline auto SetObjectProperties(const std::array<std::shared_ptr<T>, N>& objects, 
 		const std::vector<float>& parameters, size_t& counter, 

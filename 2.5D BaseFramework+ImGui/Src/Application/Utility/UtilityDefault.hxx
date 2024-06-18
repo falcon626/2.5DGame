@@ -25,34 +25,48 @@ namespace Def // Only Constexpr Value
 }
 
 /*
-member m_memberValue
+local        localValue
 
-local localValue
+argument   = local
 
-argument = local
+macro        MACRO_NAME
 
-macro MACRO_NAME
+bool         isName
 
-bool isName
+const        ConstValue
 
-const ConstValue
+constexpr  = const
 
-class = const
+class      = const
+	member   m_memberValue
 
-namespace = const
+namespace  = const
+	menmber  _value 
 
-enum = const
+enum       = const
 
-struct tagStruct
+enum class = const
 
-structMember memberValue_
+struct       tagStruct
+	member   memberValue_
 
-union _tagUnion
+union        _tagUnion
 
-matrix mMat
+matrix       mMat
 
 pointer
-	share  sp
-	unique up
-	work   wp
+	raw      p
+	share    sp
+	unique   up
+	work     wp
+
+function   = const
+	lambda = local   
+
+priority
+ matrix = bool = local = member < constexpr = const < argument < pointer
+
+.h   This Extension Has    Cpp And Classes
+.hpp This Extension Has No Cpp
+.hxx This Extension Has No Cpp And Classes
 */

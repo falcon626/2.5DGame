@@ -5,6 +5,14 @@ std::shared_ptr<KdModelData> ResourceManager::IndexModelData(const std::string& 
 {
 	auto it = m_models.find(TemplateModelsPath + path);
 	if (it != m_models.end()) return it->second;
+
+	auto model = std::make_shared<KdModelData>();
+	if (model->Load(TemplateModelsPath + path))
+	{
+		m_models[path] = model;
+		return model;
+	}
+
 	// ModelData Not Found
 	return nullptr;
 }
@@ -13,6 +21,14 @@ std::shared_ptr<KdTexture> ResourceManager::IndexTexture(const std::string& path
 {
 	auto it = m_textures.find(TemplateTexturesPath + path);
 	if (it != m_textures.end()) return it->second;
+
+	auto texture = std::make_shared<KdTexture>();
+	if (texture->Load(TemplateTexturesPath + path))
+	{
+		m_textures[path] = texture;
+		return texture;
+	}
+
 	// TextureData Not Found
 	return nullptr;
 }

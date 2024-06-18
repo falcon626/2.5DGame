@@ -4,13 +4,19 @@
 class BasePickaxe :public BaseExtensionObject
 {
 public:
-	BasePickaxe() noexcept ;
+
+	BasePickaxe() noexcept;
 	virtual ~BasePickaxe() noexcept override = default;
 
 	virtual void Init() override;
 	virtual void Update() override;
-	virtual void PostUpdate() override;
-	virtual void Use();
+	virtual void PostUpdate() override { m_mWorld = m_mScale * m_mRotation * m_mTrans; }
+
+	void SetPos(const Math::Vector3& playerZeroPoint) override { m_mTrans.Translation(m_pos + playerZeroPoint); }
+
+	void Use() noexcept;
+	bool   const IsUsing () const noexcept;
+	size_t const SwingPow() const noexcept;
 
 protected:
 
@@ -34,7 +40,7 @@ private:
 	// Other Value
 	size_t m_swingTime;
 	size_t m_swingFrame;
-	float m_rollDegX;
-	float m_rollDegZ;
-	float m_scale;
+	float  m_rollDegX;
+	float  m_rollDegZ;
+	float  m_scale;
 };

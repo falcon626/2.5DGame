@@ -19,7 +19,7 @@ public:
 	}
 
 	template <typename _T>
-	auto Load(const std::string filename, std::vector<_T>& load, size_t& elementsNum) noexcept
+	auto Load(const std::string& filename, std::vector<_T>& load, size_t& elementsNum) noexcept
 	{
 		std::ifstream file(filename, std::ios::binary);
 		if (file.is_open()) 

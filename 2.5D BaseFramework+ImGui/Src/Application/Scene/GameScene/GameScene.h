@@ -2,13 +2,14 @@
 #include"../BaseScene/BaseScene.h"
 
 class Player;
+class Stage;
 
 class GameScene : public BaseScene
 {
 public :
 
-	GameScene() { Init(); }
-	~GameScene() {}
+	GameScene () noexcept;
+	~GameScene() noexcept override = default;
 
 private:
 
@@ -17,8 +18,14 @@ private:
 
 	void LoadResources() override;
 
-	Math::Vector3 m_cameraPos;
-	float m_cameraDeg;
-
 	std::weak_ptr<Player> m_wpPlayer;
+
+	Math::Vector3 m_cameraPos;
+	Math::Vector3 m_endStagePos;
+
+	size_t m_objListLimSize;
+	float  m_cameraDeg;
+	float  m_stageDistance;
+	float  m_stageHeight;
+	float  m_stageDepth;
 };

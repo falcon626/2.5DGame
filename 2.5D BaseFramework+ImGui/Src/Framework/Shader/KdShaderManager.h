@@ -206,6 +206,8 @@ public:
 
 	bool IsPixelArtStyle() const { return m_pixelArtStyle; }
 
+	void SetPixelArtStyle(const bool& pixelArtStyle) { m_pixelArtStyle = pixelArtStyle; }
+
 	const KdAmbientController& GetAmbientController() const { return m_ambientController; }
 	KdAmbientController& WorkAmbientController() { return m_ambientController; }
 

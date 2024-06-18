@@ -4,11 +4,9 @@
 class GoldPickaxe : public BasePickaxe
 {
 public:
-	GoldPickaxe() {}
-	~GoldPickaxe() override {}
+	GoldPickaxe () noexcept = default;
+	~GoldPickaxe() noexcept override = default;
 
 	void Init() override;
-
 private:
-
 };

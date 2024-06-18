@@ -5,6 +5,18 @@ class KdGameObject : public std::enable_shared_from_this<KdGameObject>
 {
 public:
 
+	// オブジェクトタイプ用ID
+	enum ObjectType
+	{
+		None,
+		Playre   = 0b00000001,
+		Enemy    = 0b00000010,
+		Item     = 0b00000100,
+		Obstacle = 0b00001000,
+		Other    = 0b00010000,
+		Max
+	};
+
 	// どのような描画を行うのかを設定するTypeID：Bitフラグで複数指定可能
 	enum
 	{
@@ -39,6 +51,10 @@ public:
 
 	virtual void SetPos(const Math::Vector3& pos) { m_mWorld.Translation(pos); }
 	virtual Math::Vector3 GetPos() const { return m_mWorld.Translation(); }
+
+	auto GetObjectType() const { return m_objectType; }
+	
+	virtual void OnHit() {}
 
 	// 拡大率を変更する関数
 	void SetScale(float scalar);
@@ -87,4 +103,7 @@ protected:
 
 	// デバッグ情報クラス
 	std::unique_ptr<KdDebugWireFrame> m_pDebugWire = nullptr;
+
+	// オブジェクトタイプ
+	size_t m_objectType = None;
 };
