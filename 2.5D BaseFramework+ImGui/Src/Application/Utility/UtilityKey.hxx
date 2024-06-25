@@ -2,8 +2,8 @@
 
 namespace Key // Recommended To Use
 {
-	static thread_local auto _flg(false);
-	enum Code // Usable Key
+	static thread_local auto _isPush(false);
+	enum Code : size_t // Usable Key
 	{
 		Constant = 0x8000,
 		Zero = '0',

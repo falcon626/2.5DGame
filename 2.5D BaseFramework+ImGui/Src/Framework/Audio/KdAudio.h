@@ -41,6 +41,8 @@ public:
 	void PauseAllSound();
 	// 再生中の音をすべて停止する
 	void ResumeAllSound();
+	// 再生中の音のボリュームを設定する
+	void SetVolume(const float& vol) noexcept;
 
 	// 再生中の音をすべて停止・サウンドアセットの解放を行う
 	void SoundReset();

@@ -13,6 +13,7 @@ protected:
 	// KdModelData
 	void SetModelData(const std::string_view& path) noexcept;
 
+	// Ius Vitae Necisque
 	auto KillExistence() noexcept { m_isExpired = true; }
 private:
 	// Class Or Struct Value

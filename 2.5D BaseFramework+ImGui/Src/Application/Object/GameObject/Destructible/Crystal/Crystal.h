@@ -7,7 +7,6 @@ public:
 	Crystal () noexcept;
 	~Crystal() noexcept override = default;
 
-
 	void GenerateDepthMapFromLight() noexcept override;
 	void DrawLit() noexcept override;
 	void Update()  override;
@@ -15,12 +14,14 @@ public:
 	void OnBreak(const size_t& pow) noexcept;
 	inline auto const IsBroken() const { return m_isBroken; }
 
+	inline auto const IsHit() const { return m_isHit; }
+
 	void SetPos(const Math::Vector3& pos) override;
 
 private:
 	void Init() noexcept override { SetModelData("Crystal/purple/crystals.gltf"); }
 
-	size_t      m_hp;
+	int         m_hp;
 	size_t      m_interval;
 	size_t      m_intervalLim;
 	float       m_dissolve;

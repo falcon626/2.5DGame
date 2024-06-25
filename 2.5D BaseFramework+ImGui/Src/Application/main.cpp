@@ -274,8 +274,8 @@ void Application::Execute()
 
 		if (GetAsyncKeyState(VK_ESCAPE))
 		{
-//			if (MessageBoxA(m_window.GetWndHandle(), "本当にゲームを終了しますか？",
-//				"終了確認", MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2) == IDYES)
+			if (MessageBoxA(m_window.GetWndHandle(), "本当にゲームを終了しますか？",
+				"終了確認", MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2) == IDYES)
 			{
 				End();
 			}
@@ -328,6 +328,9 @@ void Application::Execute()
 		//=========================================
 
 		m_fpsController.Update();
+
+		std::string titleBar = "Miner <Fps = " + std::to_string(GetNowFPS()) + ">";
+		SetWindowTextA(m_window.GetWndHandle(), titleBar.c_str());
 	}
 
 	//===================================================================
@@ -356,10 +359,11 @@ void Application::Release()
 	m_window.Release();
 }
 
-void Application::ImGuiProcess()
+void Application::ImGuiProcess() const noexcept
 {
-	//return;
-
+#ifndef _DEBUG
+	return;
+#else
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
@@ -373,4 +377,5 @@ void Application::ImGuiProcess()
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+#endif // _DEBUG
 }

@@ -2,7 +2,6 @@
 #include "../../../../Utility/UtilityDefault.hxx"
 #include "../../../../Data/BinaryAccessor.hpp"
 
-
 Crystal::Crystal() noexcept
 	: m_hp(Def::IntNull)
 	, m_interval(Def::SizTNull)
@@ -21,11 +20,15 @@ void Crystal::SetPos(const Math::Vector3& pos)
 	auto scale  (Def::FloatNull);
 
 	{
+#if _DEBUG
 		const auto IsAssert = DATA.Load("Asset/Data/CrystalParameter/Initial_Float.dat", parameter, counter);
 		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+#else
+		DATA.Load("Asset/Data/CrystalParameter/Initial_Float.dat", parameter, counter);
+#endif // _DEBUG
 	}
 
-	m_hp                   = static_cast<size_t>(parameter[--counter]);
+	m_hp                   = static_cast<int>   (parameter[--counter]);
 	m_intervalLim          = static_cast<size_t>(parameter[--counter]);
 	m_dissolveDamageEffect = parameter[--counter];
 	m_dissolveSpeed        = parameter[--counter];
@@ -52,11 +55,7 @@ void Crystal::DrawLit() noexcept
 
 void Crystal::Update()
 {
-	if (m_isBroken)
-	{
-		m_dissolve += m_dissolveSpeed;
-	}
-
+	if (m_isBroken) m_dissolve += m_dissolveSpeed;
 	else if (m_isHit)
 	{
 		++m_interval;
@@ -73,6 +72,7 @@ void Crystal::Update()
 void Crystal::OnBreak(const size_t& pow) noexcept
 {
 	m_hp        -= pow;
-	if (m_hp    <= Def::SizTNull) m_isBroken = true;
+	KdAudioManager::Instance().Play("Asset/Sounds/Pickaxe/swing.wav");
+	if (m_hp    <= Def::IntNull) m_isBroken = true;
 	else m_isHit = true;
 }

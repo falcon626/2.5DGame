@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 class Player;
+class GameUi;
 class BackGround;
 class Crystal;
 class Treasure;
@@ -11,19 +12,25 @@ public:
 	Stage ()noexcept;
 	~Stage()noexcept override = default;
 
-	void Init()       override;
+	void Init()                      override;
 	void GenerateDepthMapFromLight() override;
-	void DrawLit()    override;
-	void DrawBright() override;
-	void Update()     override;
+	void DrawLit()                   override;
+	void PreUpdate()                 override;
+	void Update()                    override;
 
+	// Select Stage
 	void AddStage(const size_t& pattern);
+	// Random Stage
 	void AddStage();
-	void SetPlayerWeakPtr(const std::shared_ptr<Player>& spPplayer) noexcept { m_wpPlayer = spPplayer; }
+
+	// Player And GameUi Set WeakPtr
+	void SetWeakPtr(const std::shared_ptr<Player>& spPlayer, const std::shared_ptr<GameUi>& spGameUi) noexcept;
+	
+	void SetNowComboNum();
 	void SetPos(const Math::Vector3& pos, const float& stageDistance);
 
 private:
-	enum class StageType
+	enum class StageType : size_t
 	{
 		None,
 		Crystal,
@@ -31,13 +38,19 @@ private:
 		All
 	};
 
+	void TargetCrystal (const std::shared_ptr<Player>& player) noexcept;
+	void TargetTreasure(const std::shared_ptr<Player>& player) noexcept;
+
 	std::shared_ptr<BackGround> m_spBackGround;
 	std::shared_ptr<Crystal>    m_spCrystal;
 	std::shared_ptr<Treasure>   m_spTreasure;
 
 	std::weak_ptr<Player> m_wpPlayer;
+	std::weak_ptr<GameUi> m_wpGameUi;
 
 	size_t m_stageType;
-	float m_stageDistance;
-	bool m_isAction;
+	size_t m_maxPercentage;
+	size_t m_crystalPopPercentage;
+	float  m_stageDistance;
+	bool   m_isAction;
 };

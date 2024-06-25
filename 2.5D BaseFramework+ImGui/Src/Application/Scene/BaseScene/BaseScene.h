@@ -4,6 +4,15 @@ class BaseScene
 {
 public :
 
+	enum class ModeFlg : size_t 
+	{
+		None,
+		Practice,
+		Survival,
+		TimeAttack,
+		TimeLimit 
+	};
+
 	BaseScene() { Init(); }
 	virtual ~BaseScene() {}
 
@@ -35,7 +44,7 @@ protected :
 	virtual void Event();
 	virtual void Init();
 
-	virtual void LoadResources() {}
+	virtual void LoadResources() noexcept {}
 
 	std::unique_ptr<KdCamera> m_camera = nullptr;
 
@@ -44,7 +53,7 @@ protected :
 
 	// Add ObjctList Function (Emplace_Back)
 	template <class T, typename... Args>
-	inline auto AddObjList(Args&&... args) 
+	inline auto AddObjList(Args&&... args)  noexcept
 	{
 		static_assert(std::is_base_of<KdGameObject, T>::value, "T Must Be Derived From KdGameObject");
 		m_objList.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
@@ -52,7 +61,7 @@ protected :
 
 	// Add ObjctList And Create WeakPtr Function (Push_Back)
 	template <class _T, typename... _Args>
-	inline auto AddObjList(std::weak_ptr<_T>& wpObj ,_Args&&... args)
+	inline auto AddObjList(std::weak_ptr<_T>& wpObj ,_Args&&... args) noexcept
 	{
 		static_assert(std::is_base_of<KdGameObject, _T>::value, "_T Must Be Derived From KdGameObject");
 		auto obj = std::make_shared<_T>(std::forward<_Args>(args)...);

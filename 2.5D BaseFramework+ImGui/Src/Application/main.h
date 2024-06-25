@@ -43,7 +43,7 @@ private:
 	void Release();
 
 	// ImGui更新
-	void ImGuiProcess();
+	void ImGuiProcess() const noexcept;
 
 	// ゲームウィンドウクラス
 	KdWindow		m_window;

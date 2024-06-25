@@ -82,20 +82,8 @@
     <Filter Include="Src\Application\Object\GameObject\Tool">
       <UniqueIdentifier>{58a9fe03-49bc-4093-a267-2082a6dcf6d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\GameObject\Tool\Hammer">
-      <UniqueIdentifier>{d935602b-6d23-459b-9d44-5c0349c4c84e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\GameObject\Tool\Pickaxe">
       <UniqueIdentifier>{698d6520-d825-449f-b2b8-065dc9c0d4b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\GameObject\Tool\Pickaxe\IronPickaxe">
-      <UniqueIdentifier>{42385738-77a2-414f-bbfe-6e49d6831678}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\GameObject\Tool\Pickaxe\GoldPickaxe">
-      <UniqueIdentifier>{d9f77dcd-14e0-40f0-940a-0f9069630372}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\GameObject\Tool\Pickaxe\DiamondPickaxe">
-      <UniqueIdentifier>{c2759a89-2029-47f9-b64c-a8dfdecc013f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Data">
       <UniqueIdentifier>{87b54a38-f32b-4e9a-bdb7-0926756c26df}</UniqueIdentifier>
@@ -108,9 +96,6 @@
     </Filter>
     <Filter Include="Src\Application\Object\GameObject\Destructible">
       <UniqueIdentifier>{b383547a-4e7a-4cd0-9e1f-c65d6e0ac2e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\GameObject\Destructible\Rock">
-      <UniqueIdentifier>{897ba92a-07b1-44eb-b621-d88519042528}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\GameObject\Destructible\Crystal">
       <UniqueIdentifier>{69643135-0141-4c54-ba07-c29c19c62a0f}</UniqueIdentifier>
@@ -157,8 +142,65 @@
     <Filter Include="Src\Application\Object\GameObject\GameUi">
       <UniqueIdentifier>{4affe9bb-292e-4899-acb8-cf7a1344e112}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\GameObject\GameUi\Coin">
-      <UniqueIdentifier>{418db5d3-944a-4369-9fd1-44739b59687a}</UniqueIdentifier>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\StageTime">
+      <UniqueIdentifier>{cda72386-dc92-4877-8665-1bf021b4fe86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\Gauge">
+      <UniqueIdentifier>{e275e994-0387-41cf-b945-fadc01fb975c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\ComboCounter">
+      <UniqueIdentifier>{64e93e57-64b8-402c-ba21-03344301c481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\System\Timer">
+      <UniqueIdentifier>{d648e908-4709-4808-8054-70a1535f4773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\System\Counter">
+      <UniqueIdentifier>{8366999b-46b7-473e-b08f-83e2095a996b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\ScoreCounter">
+      <UniqueIdentifier>{67ec987f-dedf-41c4-8b62-0fbb097c6d86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject">
+      <UniqueIdentifier>{bf22c85f-465b-44e8-aca5-8a0469e3abe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\BackGround">
+      <UniqueIdentifier>{b62d7dc0-7737-487a-a141-04974d034b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\BackGround\Pickaxe">
+      <UniqueIdentifier>{735f287d-9627-40dd-b043-61a60a43fd9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\SelectMode">
+      <UniqueIdentifier>{9d5e49e6-d148-43ea-919b-e83ecb735147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\TitleBar">
+      <UniqueIdentifier>{72f1ac94-7e06-47d5-b38d-b836195feea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\SelectMode\Practice">
+      <UniqueIdentifier>{33251e8b-7bc5-44c7-9889-da012ffed3c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\SelectMode\Survival">
+      <UniqueIdentifier>{83a99231-cc17-46e2-b1d7-03fd4250d1c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\SelectMode\TimeAttack">
+      <UniqueIdentifier>{d67ed850-3b3e-4f45-85d0-25933bc68bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\SelectMode\TimeLimit">
+      <UniqueIdentifier>{e9abdd32-cca6-46ca-822c-226249fa33b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\BackGround\Rock">
+      <UniqueIdentifier>{a1b7846a-065a-48ea-9a40-b3abd784fa5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\TotalizationResult">
+      <UniqueIdentifier>{cb209d8b-6cde-41a5-b445-33a8ca43aead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\Character">
+      <UniqueIdentifier>{7b2b077d-6302-4fd8-a211-edd6bfb72658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\GameObject\GameUi\Ban">
+      <UniqueIdentifier>{17420fc4-1b26-416d-abef-b1a69a2e88e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\TitleObject\TitleHelp">
+      <UniqueIdentifier>{ac122a23-8932-48d4-9413-f30bc899eb76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -330,23 +372,8 @@
     <ClInclude Include="Src\Application\Utility\UtilityMath.hxx">
       <Filter>Src\Application\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\BasePickaxe.h">
+    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\Pickaxe.h">
       <Filter>Src\Application\Object\GameObject\Tool\Pickaxe</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Hammer\Hammer.h">
-      <Filter>Src\Application\Object\GameObject\Tool\Hammer</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\PickaxeManager.h">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\IronPickaxe\IronPickaxe.h">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\IronPickaxe</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\GoldPickaxe\GoldPickaxe.h">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\GoldPickaxe</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Tool\Pickaxe\DiamondPickaxe\DiamondPickaxe.h">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\DiamondPickaxe</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Utility\UtilityKey.hxx">
       <Filter>Src\Application\Utility</Filter>
@@ -359,9 +386,6 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\GameObject\Destructible\Crystal\Crystal.h">
       <Filter>Src\Application\Object\GameObject\Destructible\Crystal</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Destructible\Rock\Rock.h">
-      <Filter>Src\Application\Object\GameObject\Destructible\Rock</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\GameObject\Destructible\Treasure\Treasure.h">
       <Filter>Src\Application\Object\GameObject\Destructible\Treasure</Filter>
@@ -396,9 +420,6 @@
     <ClInclude Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.h">
       <Filter>Src\Application\Object\BaseExtensionObject</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\System\Timer.h">
-      <Filter>Src\Application\System</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\GameObject\Stage\Stage.h">
       <Filter>Src\Application\Object\GameObject\Stage</Filter>
     </ClInclude>
@@ -408,11 +429,71 @@
     <ClInclude Include="Src\Application\Object\GameObject\GameUi\GameUi.h">
       <Filter>Src\Application\Object\GameObject\GameUi</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\Destructible\BaseDestructible.h">
-      <Filter>Src\Application\Object\GameObject\Destructible</Filter>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\BaseGameUi.hpp">
+      <Filter>Src\Application\Object\GameObject\GameUi</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\GameObject\GameUi\Coin\Coin.h">
-      <Filter>Src\Application\Object\GameObject\GameUi\Coin</Filter>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\StageTime\StageTime.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\StageTime</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\Gauge\Gauge.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\ComboCounter\ComboCounter.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\ComboCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\System\Timer\Timer.h">
+      <Filter>Src\Application\System\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\System\Counter\Counter.h">
+      <Filter>Src\Application\System\Counter</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\ScoreCounter\ScoreCounter.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\ScoreCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\BackGround\BackGroundRock\BackGroundRockObjectTag.hpp">
+      <Filter>Src\Application\Object\GameObject\BackGround\BackGroundRock</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\TitleBar\TitleBar.h">
+      <Filter>Src\Application\Object\TitleObject\TitleBar</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\BackGround\Rock\Rock.h">
+      <Filter>Src\Application\Object\TitleObject\BackGround\Rock</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\BackGround\Pickaxe\OrnamentPickaxe.h">
+      <Filter>Src\Application\Object\TitleObject\BackGround\Pickaxe</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\SelectMode.h">
+      <Filter>Src\Application\Object\TitleObject\SelectMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\SelectModeTag.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\BaseSelectMode.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\Practice\Practice.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode\Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\Survival\Survival.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode\Survival</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\TimeAttack\TimeAttack.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode\TimeAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\SelectMode\TimeLimit\TimeLimit.hpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode\TimeLimit</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\TotalizationResult\TotalizationResult.h">
+      <Filter>Src\Application\Object\GameObject\TotalizationResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\Character\Character.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\GameObject\GameUi\Ban\Ban.h">
+      <Filter>Src\Application\Object\GameObject\GameUi\Ban</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\TitleObject\TitleHelp\TitleHelp.h">
+      <Filter>Src\Application\Object\TitleObject\TitleHelp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -554,32 +635,14 @@
     <ClCompile Include="..\Library\imgui\imgui_impl_win32.cpp">
       <Filter>Library\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\BasePickaxe.cpp">
+    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\Pickaxe.cpp">
       <Filter>Src\Application\Object\GameObject\Tool\Pickaxe</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Hammer\Hammer.cpp">
-      <Filter>Src\Application\Object\GameObject\Tool\Hammer</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\PickaxeManager.cpp">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\IronPickaxe\IronPickaxe.cpp">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\IronPickaxe</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\GoldPickaxe\GoldPickaxe.cpp">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\GoldPickaxe</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Tool\Pickaxe\DiamondPickaxe\DiamondPickaxe.cpp">
-      <Filter>Src\Application\Object\GameObject\Tool\Pickaxe\DiamondPickaxe</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\GameObject\Creature\Player\Player.cpp">
       <Filter>Src\Application\Object\GameObject\Creature\Player</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\GameObject\Destructible\Crystal\Crystal.cpp">
       <Filter>Src\Application\Object\GameObject\Destructible\Crystal</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Destructible\Rock\Rock.cpp">
-      <Filter>Src\Application\Object\GameObject\Destructible\Rock</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\GameObject\Destructible\Treasure\Treasure.cpp">
       <Filter>Src\Application\Object\GameObject\Destructible\Treasure</Filter>
@@ -593,9 +656,6 @@
     <ClCompile Include="Src\Application\Object\BaseExtensionObject\BaseExtensionObject.cpp">
       <Filter>Src\Application\Object\BaseExtensionObject</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\System\Timer.cpp">
-      <Filter>Src\Application\System</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\GameObject\Stage\Stage.cpp">
       <Filter>Src\Application\Object\GameObject\Stage</Filter>
     </ClCompile>
@@ -605,11 +665,47 @@
     <ClCompile Include="Src\Application\Object\GameObject\GameUi\GameUi.cpp">
       <Filter>Src\Application\Object\GameObject\GameUi</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\Destructible\BaseDestructible.cpp">
-      <Filter>Src\Application\Object\GameObject\Destructible</Filter>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\StageTime\StageTime.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\StageTime</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\GameObject\GameUi\Coin\Coin.cpp">
-      <Filter>Src\Application\Object\GameObject\GameUi\Coin</Filter>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\Gauge\Gauge.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\ComboCounter\ComboCounter.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\ComboCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\System\Timer\Timer.cpp">
+      <Filter>Src\Application\System\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\System\Counter\Counter.cpp">
+      <Filter>Src\Application\System\Counter</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\ScoreCounter\ScoreCounter.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\ScoreCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\TitleObject\TitleBar\TitleBar.cpp">
+      <Filter>Src\Application\Object\TitleObject\TitleBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\TitleObject\BackGround\Rock\Rock.cpp">
+      <Filter>Src\Application\Object\TitleObject\BackGround\Rock</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\TitleObject\BackGround\Pickaxe\OrnamentPickaxe.cpp">
+      <Filter>Src\Application\Object\TitleObject\BackGround\Pickaxe</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\TitleObject\SelectMode\SelectMode.cpp">
+      <Filter>Src\Application\Object\TitleObject\SelectMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\TotalizationResult\TotalizationResult.cpp">
+      <Filter>Src\Application\Object\GameObject\TotalizationResult</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\Character\Character.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\GameObject\GameUi\Ban\Ban.cpp">
+      <Filter>Src\Application\Object\GameObject\GameUi\Ban</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\TitleObject\TitleHelp\TitleHelp.cpp">
+      <Filter>Src\Application\Object\TitleObject\TitleHelp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,19 +13,20 @@ public:
 
 	void SetPos(const Math::Vector3& pos) override;
 
-	void OnBreak() noexcept { m_isBroken = true; }
+	void OnBreak() noexcept { m_isBroken = true; KdAudioManager::Instance().Play("Asset/Sounds/Pickaxe/swing.wav"); }
 	inline auto const IsBroken() const { return m_isBroken; }
 
-	void OnCollect() noexcept { m_isCollect = true; }
-	inline auto const IsCollect() const  { return m_isCollect; }
+	void OnCollected() noexcept { m_isCollected = true; KdAudioManager::Instance().Play("Asset/Sounds/Collect/treasure.wav");
+	}
+	inline auto const IsCollected() const  { return m_isCollected; }
 
 private:
 	void Init() noexcept override { SetModelData("Treasure/Treasure_Chest.gltf"); }
 
-	size_t      m_hp;
-	size_t      m_interval;
-	float       m_dissolve;
-	float       m_dissolveSpeed;
-	bool        m_isBroken;
-	bool        m_isCollect;
+	float  m_dissolve;
+	float  m_dissolveSpeed;
+	float  m_scale;
+	float  m_scaleChange;
+	bool   m_isBroken;
+	bool   m_isCollected;
 };

@@ -1,11 +1,11 @@
 ﻿#pragma once
+#include "../BackGroundRockObjectTag.hpp"
 #include "../../../../../Object/BaseExtensionObject/BaseExtensionObject.h"
 
-class BlueCrystal : public BaseExtensionObject
+class BlueCrystal : public BaseExtensionObject, BackGroundRockObjectTag
 {
 public:
-	BlueCrystal ()noexcept { Init(); }
+	BlueCrystal ()noexcept { SetModelData("Crystal/biggestblue/crystalexport.gltf"); }
 	~BlueCrystal()noexcept override = default;
 private:
-	inline void Init()override { SetModelData("Crystal/biggestblue/crystalexport.gltf"); };
 };

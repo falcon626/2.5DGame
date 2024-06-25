@@ -1,11 +1,11 @@
 ﻿#pragma once
+#include "../BackGroundRockObjectTag.hpp"
 #include "../../../../../Object/BaseExtensionObject/BaseExtensionObject.h"
 
-class GrayTowering : public BaseExtensionObject
+class GrayTowering : public BaseExtensionObject, BackGroundRockObjectTag
 {
 public:
-	GrayTowering ()noexcept { Init(); }
+	GrayTowering ()noexcept { SetModelData("Rock/Rock_03.gltf"); }
 	~GrayTowering()noexcept override = default;
 private:
-	inline void Init()override { SetModelData("Rock/Rock_03.gltf"); };
 };

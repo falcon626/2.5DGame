@@ -10,7 +10,10 @@ public :
 	enum class SceneType
 	{
 		Title,
-		Game,
+		GamePractice,
+		GameSurvival,
+		GameTimeAttack,
+		GameTimeLimit,
 	};
 
 	void PreUpdate();
@@ -38,23 +41,36 @@ private :
 
 	// マネージャーの初期化
 	// インスタンス生成(アプリ起動)時にコンストラクタで自動実行
-	void Init()
-	{
-		// 開始シーンに切り替え
-		ChangeScene(m_currentSceneType);
-	}
+	void Init();
 
 	// シーン切り替え関数
 	void ChangeScene(SceneType _sceneType);
+
+	// サウンドボリューム制御関数
+	void SoundUpdate() noexcept;
 
 	// 現在のシーンのインスタンスを保持しているポインタ
 	std::shared_ptr<BaseScene> m_currentScene = nullptr;
 
 	// 現在のシーンの種類を保持している変数
-	SceneType m_currentSceneType = SceneType::Game;
+	SceneType m_currentSceneType = SceneType::Title;
 	
 	// 次のシーンの種類を保持している変数
 	SceneType m_nextSceneType = m_currentSceneType;
+
+	// すべてのサウンドのボリューム
+	float m_masterVolume = static_cast<float>(NULL);
+
+	// サウンドボリューム変動値
+	float m_changeVol    = static_cast<float>(NULL);
+
+	// ミュートフラグ
+	bool m_muteFlg    = false;
+
+	// キーフラグ
+	bool m_volUpKeyFlg   = false;
+	bool m_volDownKeyFlg = false;
+	bool m_volMuteKeyFlg = false;
 
 private:
 

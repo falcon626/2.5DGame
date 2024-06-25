@@ -27,12 +27,17 @@ void BackGround::Init()
 void BackGround::SetPos(const Math::Vector3& stageZeroPoint)
 {
 	m_mWorld.Translation(stageZeroPoint);
+
 	std::vector<float>  parameter;
 	auto counter  (Def::SizTNull);
 
 	{
+#if _DEBUG
 		const auto IsAssert = DATA.Load("Asset/Data/RocksParameter/Initial_Float.dat", parameter, counter);
 		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
+#else
+		DATA.Load("Asset/Data/RocksParameter/Initial_Float.dat", parameter, counter);
+#endif // _DEBUG
 	}
 
 	SetObjectProperties(m_spBlueCrystal,    parameter, counter, stageZeroPoint);
@@ -73,12 +78,4 @@ void BackGround::DrawLit()
 		grSl->DrawLit();
 	for (decltype(auto) grTo : m_spGrayTowering)
 		grTo->DrawLit();
-}
-
-void BackGround::DrawBright()
-{
-}
-
-void BackGround::Update()
-{
 }
