@@ -57,6 +57,7 @@ void GameUi::Update()
 {
 	for (decltype(auto) obj : m_spUiObj)
 		obj->Update();
+
 	if (Key::IsPushing(Key::Tab) || Key::IsPushing(Key::SideR_Click))
 	{
 		if (!Key::_isPush)
@@ -82,7 +83,7 @@ void GameUi::Update()
 			else if (!m_wpCharacter.expired())
 			{
 				m_isCharacterExpired = false;
-				m_wpCharacter.lock()->KillExistence();
+				m_wpCharacter.lock() ->KillExistence();
 			}
 		}
 	}
@@ -91,6 +92,8 @@ void GameUi::Update()
 
 void GameUi::PostUpdate()
 {
+	if(m_wpGauge.expired() && !m_wpCharacter.expired()) m_wpCharacter.lock()->KillExistence();
+
 	if (!m_wpGauge.expired() && !m_wpStageTime.expired() && !m_wpScoreCounter.expired() && !m_wpComboCounter.expired())
 	{
 		auto isTired(m_wpGauge.lock()->IsTired());

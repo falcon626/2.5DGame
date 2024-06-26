@@ -10,5 +10,7 @@ void BaseExtensionObject::SetModelData(const std::string_view& path) noexcept
 	m_spModel = std::make_shared<KdModelData>();
 	m_spModel = RESOURCE.IndexModelData(modelPath);
 
+#if _DEBUG
 	if (!m_spModel) _ASSERT_EXPR(false, L"ModelData Not Found");
+#endif // _DEBUG
 }

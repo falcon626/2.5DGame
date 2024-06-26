@@ -16,10 +16,10 @@ void Counter::Init()
 
 	{
 #if _DEBUG
-		const auto IsAssert = DATA.Load("Asset/Data/CounterParameter/Initial_Float.dat", parameter, counter);
+		const auto IsAssert = DATA.Load("Asset/Data/CounterParameter/Initial_Int.dat", parameter, counter);
 		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
 #else
-		DATA.Load("Asset/Data/CounterParameter/Initial_Float.dat", parameter, counter);
+		DATA.Load("Asset/Data/CounterParameter/Initial_Int.dat", parameter, counter);
 #endif // _DEBUG
 	}
 

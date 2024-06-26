@@ -13,6 +13,9 @@ void SceneManager::Init()
 	// 開始シーンに切り替え
 	ChangeScene(m_currentSceneType);
 
+	m_spSoundTex = std::make_shared<KdTexture>();
+	m_spSoundTex->Load("Asset/Textures/Sound/sound.png");
+
 	// Local Declaration
 	std::vector<float> parameter;
 	auto counter(static_cast<size_t>(NULL));
@@ -25,10 +28,15 @@ void SceneManager::Init()
 #else
 		DATA.Load("Asset/Data/SoundParameter/Initial_Float.dat", parameter, counter);
 #endif // _DEBUG
-}
+	}
 
-	m_masterVolume = parameter[--counter];
-	m_changeVol    = parameter[--counter];
+	m_masterVolume  = parameter[--counter];
+	m_changeVol     = parameter[--counter];
+
+	m_soundTexPos.x = parameter[--counter];
+	m_soundTexPos.y = parameter[--counter];
+
+	KdAudioManager::Instance().Play("Asset/Sounds/Stage/torch.wav", true);
 }
 
 void SceneManager::PreUpdate()
@@ -104,11 +112,30 @@ void SceneManager::Draw()
 void SceneManager::DrawSprite()
 {
 	m_currentScene->DrawSprite();
+
+	SoundSpriteDraw();
 }
 
 void SceneManager::DrawDebug()
 {
 	m_currentScene->DrawDebug();
+}
+
+void SceneManager::SoundSpriteDraw() noexcept
+{
+	m_soundTexRect =
+	{ static_cast<long>(NULL), static_cast<long>(NULL),
+	  static_cast<long> (m_spSoundTex->GetWidth() / SoundType::TypeMax), static_cast<long>(m_spSoundTex->GetHeight()) };
+
+	if      (m_volDownKeyFlg) m_soundTexRect.x = static_cast<long>((m_spSoundTex->GetWidth() / SoundType::TypeMax) * SoundType::VolumeDown);
+
+	else if (m_volUpKeyFlg)   m_soundTexRect.x = static_cast<long>((m_spSoundTex->GetWidth() / SoundType::TypeMax) * SoundType::VolumeUp);
+
+	else if (m_muteFlg || m_masterVolume <= static_cast<float>(NULL)) m_soundTexRect.x = static_cast<long>((m_spSoundTex->GetWidth() / SoundType::TypeMax) * SoundType::VolumeMute);
+
+	else m_soundTexRect.x = static_cast<long>((m_spSoundTex->GetWidth() / SoundType::TypeMax) * SoundType::Normal);
+
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_spSoundTex, static_cast<int>(m_soundTexPos.x), static_cast<int>(m_soundTexPos.y), static_cast<int>(m_spSoundTex->GetHeight()), static_cast<int>(m_spSoundTex->GetHeight()), &m_soundTexRect);
 }
 
 const std::list<std::shared_ptr<KdGameObject>>& SceneManager::GetObjList()

@@ -18,7 +18,6 @@ TotalizationResult::TotalizationResult(const bool& isModeSurvival, const bool& i
 	, m_rotZ                (Def::FloatNull)
 	, m_rotSpeed            (Def::FloatNull)
 	, m_maxRot              (Def::FloatNull)
-	, m_coefficient         (Def::FloatNull)
 	, m_scale               (Def::FloatNull)
 	, m_isModeSurvival   (isModeSurvival)
 	, m_isModeTimeAttack (isModeTimeAttack)
@@ -39,10 +38,21 @@ void TotalizationResult::Init()
 #endif // _DEBUG
 	}
 
-	m_rotSpeed    = parameter[--counter];
-	m_maxRot      = parameter[--counter];
-	m_coefficient = parameter[--counter];
-	m_scale       = parameter[--counter];
+	m_rotSpeed = parameter[--counter];
+	m_maxRot   = parameter[--counter];
+	m_scale    = parameter[--counter];
+
+	auto coefficient = parameter[--counter];
+
+	m_maxPercentage  = static_cast<size_t>(parameter[--counter]);
+
+	m_rotX = parameter[--counter];
+	m_rotY = parameter[--counter];
+	m_rotZ = parameter[--counter];
+
+	m_correctionPos.x = parameter[--counter];
+	m_correctionPos.y = parameter[--counter];
+	m_correctionPos.z = parameter[--counter];
 
 	auto survivalSilverBorder   = parameter[--counter];
 	auto survivalGoldBorder     = parameter[--counter];
@@ -57,52 +67,72 @@ void TotalizationResult::Init()
 
 	if (m_isModeSurvival)
 	{
-		auto result((m_score / m_time) * (m_maxCombo * m_coefficient));
+		auto result((m_score / m_time) * (m_maxCombo * coefficient));
 
-		if (result >= survivalGoldBorder) AwardGold();
+		if (result >= survivalGoldBorder)        AwardGold();
 
 		else if (result >= survivalSilverBorder) AwardSilver();
 
-		else AwardBronze();
+		else                                     AwardBronze();
 	}
 
 	else if (m_isModeTimeAttack)
 	{
-		if (m_maxCombo < timeAttackComboBorder)    AwardBronze();
+		if (m_maxCombo < timeAttackComboBorder)        AwardBronze();
 
-		auto result(m_time + (m_score - m_maxCombo));
+		else
+		{
+			auto result(m_time + (m_score - m_maxCombo));
 
-		if (result >= timeAttackBronzeBorder)      AwardBronze();
+			if (result >= timeAttackBronzeBorder)      AwardBronze();
 
-		else if (result >= timeAttackSilverBorder) AwardSilver();
+			else if (result >= timeAttackSilverBorder) AwardSilver();
 
-		else AwardGold();
+			else                                       AwardGold();
+		}
 	}
 
 	else if (m_isModeTimeLimit)
 	{
-		if (m_time > timeLimitTimeBorder) AwardBronze();
+		if (m_time > timeLimitTimeBorder)         AwardBronze();
 
 		auto result(m_maxCombo);
-		if (result >= timeLimitGoldBorder) AwardGold();
+		if (result >= timeLimitGoldBorder)        AwardGold();
 
 		else if (result >= timeLimitSilverBorder) AwardSilver();
 
-		else AwardBronze();
+		else                                      AwardBronze();
 	}
+
+	m_randomization = Formula::Rand(Def::SizTNull, m_maxPercentage);
 }
 
 void TotalizationResult::Update()
 {
-	m_rotY += m_rotSpeed;
-	if (m_rotY > m_maxRot) m_rotY -= m_maxRot;
+	if (m_randomization == Def::SizTNull)
+	{
+		m_rotX += m_rotSpeed;
+		if (m_rotX > m_maxRot) m_rotX -= m_maxRot;
+	}
+
+	else if (m_randomization == Def::SizTOne)
+	{
+		m_rotY += m_rotSpeed;
+		if (m_rotY > m_maxRot) m_rotY -= m_maxRot;
+	}
+
+	else
+	{
+		m_rotZ += m_rotSpeed;
+		if (m_rotZ > m_maxRot) m_rotZ -= m_maxRot;
+	}
 
 	m_mWorld =
-		Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45.0f))*
+		Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_rotX))*
 		Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(m_rotY))*
-		Math::Matrix::CreateRotationZ(DirectX::XMConvertToRadians(3.00f));
+		Math::Matrix::CreateRotationZ(DirectX::XMConvertToRadians(m_rotZ));
 
-	auto pos(m_pos + Math::Vector3(0, 6.5f, 2));
+	auto pos(m_pos + m_correctionPos);
 	SetScale(m_scale);
 	SetPos(pos);
 }

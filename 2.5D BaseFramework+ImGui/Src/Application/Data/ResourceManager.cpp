@@ -9,7 +9,7 @@ std::shared_ptr<KdModelData> ResourceManager::IndexModelData(const std::string& 
 	auto model = std::make_shared<KdModelData>();
 	if (model->Load(TemplateModelsPath + path))
 	{
-		m_models[path] = model;
+		m_models[TemplateModelsPath + path] = model;
 		return model;
 	}
 
@@ -25,7 +25,7 @@ std::shared_ptr<KdTexture> ResourceManager::IndexTexture(const std::string& path
 	auto texture = std::make_shared<KdTexture>();
 	if (texture->Load(TemplateTexturesPath + path))
 	{
-		m_textures[path] = texture;
+		m_textures[TemplateTexturesPath + path] = texture;
 		return texture;
 	}
 
@@ -39,7 +39,9 @@ void ResourceManager::PreLoadModelsData(const std::vector<std::string>& paths) n
 	{
 		auto model = std::make_shared<KdModelData>();
 		if (model->Load(TemplateModelsPath + path)) m_models.emplace(TemplateModelsPath + path, model);
+#if _DEBUG
 		else _ASSERT_EXPR(false, L"ModelData Not Found");
+#endif // _DEBUG
 	}
 }
 
@@ -49,7 +51,9 @@ void ResourceManager::PreLoadTextures(const std::vector<std::string>& paths) noe
 	{
 		auto texture = std::make_shared<KdTexture>();
 		if (texture->Load(TemplateTexturesPath + path)) m_textures.emplace(TemplateTexturesPath + path, texture);
+#if _DEBUG
 		else _ASSERT_EXPR(false, L"TextureData Not Found");
+#endif // _DEBUG
 	}
 }
 

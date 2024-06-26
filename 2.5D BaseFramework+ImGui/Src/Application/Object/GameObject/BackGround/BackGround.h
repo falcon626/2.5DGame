@@ -17,6 +17,7 @@ public:
 	void GenerateDepthMapFromLight() override;
 	void DrawLit()                   override;
 
+	// Ius Vitae Necisque
 	void KillExistence() noexcept { m_isExpired = true; }
 
 	void SetPos(const Math::Vector3& stageZeroPoint) override;

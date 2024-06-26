@@ -11,30 +11,27 @@ public:
 	Player () noexcept;
 	~Player() noexcept override = default;
 
-
 	void GenerateDepthMapFromLight() noexcept override;
-	void DrawLit() noexcept override;
-	void PreUpdate() override;
-	void Update() override;
+	void DrawLit()    noexcept override;
+	void PreUpdate()  override;
+	void Update()     override;
 	void PostUpdate() override;
-
-	void ChainCombo() noexcept;
 	
 	inline auto SetStageDistance(const float& stageDistance) noexcept { m_stageDistance = stageDistance; }
 
-	inline Math::Vector3 GetPos() const noexcept override { return m_pos; }
+	inline Math::Vector3 GetPos()  const noexcept override            { return m_pos; }
 
-	inline auto const GetCombo() const noexcept { return m_comboNum; }
+	inline auto const GetCombo()   const noexcept                     { return m_comboNum; }
+	void              ChainCombo() noexcept;
+	inline auto       ComboInterrupted() noexcept                     { m_comboNum -= m_comboNum; }
 
-	inline auto ComboInterrupted() noexcept { m_comboNum -= m_comboNum; }
+	inline auto const IsTaking()  const noexcept                      { return m_isTake; }
 
-	inline auto const IsTaking() const noexcept { return m_isTake; }
+	inline auto       Move()      noexcept                            { m_isMove = true; }
+	inline auto const IsMoveing() const noexcept                      { return m_isMove; }
 
-	inline auto        Move() noexcept { m_isMove = true; }
-	inline auto const IsMoveing() const noexcept { return m_isMove; }
-
-	bool   const IsUsing () const noexcept;
-	size_t const SwingPow() const noexcept;
+	bool   const IsUsing ()       const noexcept;
+	size_t const SwingPow()       const noexcept;
 
 private:
 	void Init() override;
@@ -63,5 +60,4 @@ private:
 	float  m_maxSpeed;
 	bool   m_isMove;
 	bool   m_isTake;
-
 };

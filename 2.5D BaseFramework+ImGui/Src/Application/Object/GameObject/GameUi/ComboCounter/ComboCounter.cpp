@@ -35,7 +35,7 @@ void ComboCounter::Init()
 	auto y(parameter[--counter]);
 
 	m_pos = {x,y};
-	m_limitComboNum = parameter[--counter];
+	m_limitComboNum = static_cast<size_t>(parameter[--counter]);
 }
 
 void ComboCounter::DrawSprite() noexcept

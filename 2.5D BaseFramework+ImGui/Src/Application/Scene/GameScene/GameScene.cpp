@@ -28,16 +28,15 @@ GameScene::GameScene(const ModeFlg& mode) noexcept
 
 void GameScene::Event()
 {
-	if (Key::IsPushing(Key::Wheel_Click))
-	{
-		SceneManager::Instance().SetNextScene (SceneManager::SceneType::Title);
-	}
+	if (Key::IsPushing(Key::Wheel_Click) || Key::IsPushing(Key::Shift)) SceneManager::Instance().SetNextScene (SceneManager::SceneType::Title);
 
 	if (!m_wpPlayer.expired())
 	{
 		auto player = m_wpPlayer.lock();
+
 		auto mRot = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
 		auto mTra = Math::Matrix::CreateTranslation(m_cameraPos + player->GetPos());
+
 		m_camera->SetCameraMatrix((mRot * mTra));
 
 		if (m_objListLimSize > m_objList.size() && !m_wpGameUi.expired())

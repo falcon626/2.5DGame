@@ -8,15 +8,15 @@ public:
 	Pickaxe() noexcept;
 	virtual ~Pickaxe() noexcept override = default;
 
-	virtual void Init() override;
-	virtual void PreUpdate() override;
-	virtual void Update() override;
+	virtual void Init      () override;
+	virtual void PreUpdate () override;
+	virtual void Update    () override;
 	virtual void PostUpdate() override { m_mWorld = m_mScale * m_mRotation * m_mTrans; }
 
 	void SetPos(const Math::Vector3& playerZeroPoint) override { m_mTrans.Translation(m_pos + playerZeroPoint); }
-	void SetComboNum(const size_t& comboNum) { m_comboNum = comboNum; }
+	void SetComboNum(const size_t& comboNum) noexcept { m_comboNum = comboNum; }
 
-	void Use() noexcept;
+	void         Use()            noexcept;
 	bool   const IsUsing () const noexcept;
 	size_t const SwingPow() const noexcept;
 

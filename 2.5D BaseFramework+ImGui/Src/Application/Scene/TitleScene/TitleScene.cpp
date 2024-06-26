@@ -11,7 +11,7 @@
 
 void TitleScene::Event()
 {
-	if (Key::IsPushing(Key::SideL_Click) && !m_wpSelectMode.expired())
+	if ((Key::IsPushing(Key::SideL_Click) || Key::IsPushing(Key::Space)) && !m_wpSelectMode.expired())
 	{
 		auto mode(m_wpSelectMode.lock()->GetMode());
 
@@ -71,8 +71,6 @@ void TitleScene::Init()
 	auto mRot = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(parameter[--counter]));
 	auto mTra = Math::Matrix::CreateTranslation({x,y,z});
 	m_camera->SetCameraMatrix((mRot * mTra));
-
-	KdAudioManager::Instance().Play("Asset/Sounds/Stage/torch.wav", true);
 }
 
 void TitleScene::LoadResources() noexcept

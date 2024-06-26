@@ -4,7 +4,7 @@
 class Gauge : public BaseGameUi
 {
 public:
-	Gauge (const std::shared_ptr<KdTexture>& spTex) noexcept;
+	explicit Gauge (const std::shared_ptr<KdTexture>& spTex) noexcept;
 	Gauge () noexcept = default;
 	~Gauge() noexcept override = default;
 

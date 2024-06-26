@@ -6,7 +6,7 @@ class Counter;
 class ScoreCounter : public BaseGameUi
 {
 public:
-	ScoreCounter (const std::shared_ptr<KdTexture>& spTex, const std::shared_ptr<KdTexture> spCrystalTex, const std::shared_ptr<KdTexture> spTreasureTex) noexcept;
+	explicit ScoreCounter (const std::shared_ptr<KdTexture>& spTex, const std::shared_ptr<KdTexture> spCrystalTex, const std::shared_ptr<KdTexture> spTreasureTex) noexcept;
 	ScoreCounter () noexcept = default;
 	~ScoreCounter() noexcept override = default;
 

@@ -6,7 +6,7 @@ class Counter;
 class ComboCounter: public BaseGameUi
 {
 public:
-	ComboCounter (const std::shared_ptr<KdTexture>& spTex) noexcept;
+	explicit ComboCounter (const std::shared_ptr<KdTexture>& spTex) noexcept;
 	ComboCounter ()noexcept = default;
 	~ComboCounter()noexcept = default;
 

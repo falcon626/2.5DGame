@@ -3,13 +3,13 @@
 #include "../../../../Data/BinaryAccessor.hpp"
 
 Crystal::Crystal() noexcept
-	: m_hp(Def::IntNull)
-	, m_interval(Def::SizTNull)
-	, m_dissolve(Def::FloatNull)
+	: m_hp                  (Def::IntNull)
+	, m_interval            (Def::SizTNull)
+	, m_dissolve            (Def::FloatNull)
 	, m_dissolveDamageEffect(Def::FloatNull)
-	, m_dissolveSpeed(Def::FloatNull)
-	, m_isBroken(false)
-	, m_isHit(false)
+	, m_dissolveSpeed       (Def::FloatNull)
+	, m_isBroken            (false)
+	, m_isHit               (false)
 { Init(); }
 
 void Crystal::SetPos(const Math::Vector3& pos)

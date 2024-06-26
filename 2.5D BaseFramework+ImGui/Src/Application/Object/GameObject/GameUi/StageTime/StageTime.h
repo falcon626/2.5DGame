@@ -7,7 +7,7 @@ class Timer;
 class StageTime : public BaseGameUi
 {
 public:
-	StageTime (const std::shared_ptr<KdTexture>& spTex) noexcept;
+	explicit StageTime (const std::shared_ptr<KdTexture>& spTex) noexcept;
 	StageTime () noexcept = default;
 	~StageTime() noexcept override = default;
 

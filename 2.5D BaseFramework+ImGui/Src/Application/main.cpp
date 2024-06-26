@@ -68,6 +68,7 @@ void Application::PreUpdate()
 void Application::Update()
 {
 	SceneManager::Instance().Update();
+	KdAudioManager::Instance().Update();
 }
 
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////

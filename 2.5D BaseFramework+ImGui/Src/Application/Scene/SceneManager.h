@@ -39,6 +39,15 @@ public :
 
 private :
 
+	enum SoundType : size_t
+	{
+		Normal,
+		VolumeUp,
+		VolumeDown,
+		VolumeMute,
+		TypeMax
+	};
+
 	// マネージャーの初期化
 	// インスタンス生成(アプリ起動)時にコンストラクタで自動実行
 	void Init();
@@ -49,6 +58,9 @@ private :
 	// サウンドボリューム制御関数
 	void SoundUpdate() noexcept;
 
+	// サウンドボリューム描画関数
+	void SoundSpriteDraw() noexcept;
+
 	// 現在のシーンのインスタンスを保持しているポインタ
 	std::shared_ptr<BaseScene> m_currentScene = nullptr;
 
@@ -57,6 +69,15 @@ private :
 	
 	// 次のシーンの種類を保持している変数
 	SceneType m_nextSceneType = m_currentSceneType;
+
+	// サウンドテクスチャー
+	std::shared_ptr<KdTexture> m_spSoundTex = nullptr;
+
+	// サウンドテクスチャー切り取り用変数
+	Math::Rectangle m_soundTexRect = {};
+
+	// サウンドテクスチャー座標用変数
+	Math::Vector2 m_soundTexPos  = {};
 
 	// すべてのサウンドのボリューム
 	float m_masterVolume = static_cast<float>(NULL);

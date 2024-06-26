@@ -6,8 +6,8 @@ class GameUi;
 class TotalizationResult : public BaseExtensionObject
 {
 public:
-	TotalizationResult (const bool& isModeSurvival,const bool& isModeTimeAttack,const bool& isModeTimeLimit, 
-		const size_t& maxCombo, const size_t& time, const size_t& score, const Math::Vector3& pos)noexcept;
+	explicit TotalizationResult (const bool& isModeSurvival,const bool& isModeTimeAttack,const bool& isModeTimeLimit,
+		const size_t& maxCombo, const size_t& time, const size_t& score, const Math::Vector3& pos) noexcept;
 	~TotalizationResult()noexcept override = default;
 
 	void Update()override;
@@ -36,7 +36,6 @@ private:
 	float  m_rotZ;
 	float  m_rotSpeed;
 	float  m_maxRot;
-	float  m_coefficient;
 	float  m_scale;
 
 	bool m_isModeSurvival;

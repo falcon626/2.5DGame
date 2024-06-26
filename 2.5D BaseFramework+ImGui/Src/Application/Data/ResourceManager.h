@@ -28,7 +28,7 @@ private:
 	~ResourceManager() noexcept = default;
 
 	std::unordered_map<std::string, std::shared_ptr<KdModelData>> m_models;
-	std::unordered_map<std::string, std::shared_ptr<KdTexture>> m_textures;
+	std::unordered_map<std::string, std::shared_ptr<KdTexture>>   m_textures;
 
 	const std::string TemplateModelsPath   = "Asset/Models/";
 	const std::string TemplateTexturesPath = "Asset/Textures/";

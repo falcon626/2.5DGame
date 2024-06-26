@@ -60,24 +60,23 @@ void Player::Init()
 	m_speedGear = parameter[--counter];
 }
 
-
 void Player::GenerateDepthMapFromLight() noexcept
 {
-	if (!m_spPickaxe)return;
+	if (!m_spPickaxe) return;
 	m_spPickaxe->GenerateDepthMapFromLight();
 	m_spCart   ->GenerateDepthMapFromLight();
 }
 
 void Player::DrawLit() noexcept
 {
-	if (!m_spPickaxe)return;
+	if (!m_spPickaxe) return;
 	m_spPickaxe->DrawLit();
 	m_spCart   ->DrawLit();
 }
 
 void Player::PreUpdate()
 {
-	if (!m_spPickaxe)return;
+	if (!m_spPickaxe) return;
 
 	m_spPickaxe->SetComboNum(m_comboNum);
 	m_spPickaxe->PreUpdate();
@@ -85,7 +84,7 @@ void Player::PreUpdate()
 	auto speedUp(static_cast<float>(m_comboNum) * m_speedGear);
 	m_speed  = m_minSpeed;
 	m_speed += speedUp;
-	if (m_speed < m_maxSpeed)m_speed = m_maxSpeed;
+	if (m_speed < m_maxSpeed) m_speed = m_maxSpeed;
 
 	m_comboDuration = m_comboDurationNormal;
 	if (m_comboNum > m_comboDurationBorder) m_comboDuration -= m_comboDurationChange;
@@ -157,10 +156,12 @@ void Player::Take() noexcept
 
 bool const Player::IsUsing() const noexcept
 {
-	return m_spPickaxe->IsUsing();
+	if (!m_spPickaxe) return false;
+	return m_spPickaxe ->IsUsing();
 }
 
 size_t const Player::SwingPow() const noexcept
 {
+	if (!m_spPickaxe) return Def::SizTNull;
 	return m_spPickaxe->SwingPow();
 }

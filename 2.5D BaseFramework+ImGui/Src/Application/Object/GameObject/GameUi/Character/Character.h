@@ -4,7 +4,7 @@
 class Character : public BaseGameUi
 {
 public:
-	Character(const std::shared_ptr<KdTexture>& spCombo, const std::shared_ptr<KdTexture>& spTime, const std::shared_ptr<KdTexture>& spTension, const std::shared_ptr<KdTexture>& spMiddleClick)noexcept;
+	explicit Character(const std::shared_ptr<KdTexture>& spCombo, const std::shared_ptr<KdTexture>& spTime, const std::shared_ptr<KdTexture>& spTension, const std::shared_ptr<KdTexture>& spMiddleClick)noexcept;
 	~Character()noexcept override = default;
 
 	void DrawSprite() noexcept override;
