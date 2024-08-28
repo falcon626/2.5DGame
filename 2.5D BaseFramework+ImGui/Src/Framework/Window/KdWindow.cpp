@@ -20,7 +20,7 @@ bool KdWindow::Create(int clientWidth, int clientHeight, std::string_view titleN
 	WNDCLASSEX wc;											// ウィンドウクラスの定義用
 	wc.cbSize = sizeof(WNDCLASSEX);							// 構造体のサイズ
 	wc.style = 0;											// スタイル
-	wc.lpfnWndProc = &KdWindow::callWindowProc;			// ウインドウ関数
+	wc.lpfnWndProc = &KdWindow::callWindowProc;				// ウインドウ関数
 	wc.cbClsExtra = 0;										// エキストラクラス情報 
 	wc.cbWndExtra = 0;										// エキストラウィンドウ情報
 	wc.hInstance = hInst;									// インスタンスハンドル
@@ -39,7 +39,7 @@ bool KdWindow::Create(int clientWidth, int clientHeight, std::string_view titleN
 	//ウィンドウの作成
 	m_hWnd = CreateWindow(
 		wndClsName.c_str(),									// ウィンドウクラス名
-		sjis_to_wide(titleName.data()).c_str(),					// ウィンドウのタイトル
+		sjis_to_wide(titleName.data()).c_str(),				// ウィンドウのタイトル
 		WS_OVERLAPPEDWINDOW - WS_THICKFRAME,				// ウィンドウタイプを標準タイプに	
 		0,													// ウィンドウの位置（Ｘ座標）
 		0,													// ウィンドウの位置（Ｙ座標）						

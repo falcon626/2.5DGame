@@ -42,7 +42,7 @@ void Player::Init()
 
 	{
 #if _DEBUG
-		const auto IsAssert = DATA.Load("Asset/Data/PlayerParameter/Initial_Float.dat", parameter, counter);
+		[[maybe_unused]] const auto IsAssert = DATA.Load("Asset/Data/PlayerParameter/Initial_Float.dat", parameter, counter);
 		_ASSERT_EXPR(IsAssert, L"BinaryData Not Found");
 #else
 		DATA.Load("Asset/Data/PlayerParameter/Initial_Float.dat", parameter, counter);

@@ -3,11 +3,11 @@
 #include "../../../../Utility/UtilityDefault.hxx"
 
 Gauge::Gauge(const std::shared_ptr<KdTexture>& spTex) noexcept
-	: m_rectY(Def::IntNull)
+	: m_rectY       (Def::IntNull)
 	, m_mistakeCount(Def::SizTNull)
-	, m_maxMistake(Def::SizTNull)
-	, m_speed(Def::FloatNull)
-	, m_isTired(false)
+	, m_maxMistake  (Def::SizTNull)
+	, m_speed       (Def::FloatNull)
+	, m_isTired     (false)
 {
 	SetTex(spTex);
 	Init();
@@ -60,7 +60,7 @@ void Gauge::Update()
 {
 	if (m_isLimitOver || m_isComboOver)
 	{
-		auto distance = m_goalPos - m_pos;
+		auto distance(m_goalPos - m_pos);
 		if (std::abs(distance.LengthSquared()) > (m_speed * m_speed))
 		{
 			distance.Normalize();

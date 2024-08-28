@@ -36,7 +36,6 @@ void GameScene::Event()
 
 		auto mRot = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(m_cameraDeg));
 		auto mTra = Math::Matrix::CreateTranslation(m_cameraPos + player->GetPos());
-
 		m_camera->SetCameraMatrix((mRot * mTra));
 
 		if (m_objListLimSize > m_objList.size() && !m_wpGameUi.expired())

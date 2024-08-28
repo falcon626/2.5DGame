@@ -4,9 +4,9 @@
 #include "../../../../System/Counter/Counter.h"
 
 ScoreCounter::ScoreCounter(const std::shared_ptr<KdTexture>& spTex, const std::shared_ptr<KdTexture> spCrystalTex, const std::shared_ptr<KdTexture> spTreasureTex) noexcept
-	: m_crystalBrokenNum (Def::IntNull)
+	: m_crystalBrokenNum    (Def::IntNull)
 	, m_treasureCollectedNum(Def::IntNull)
-	, m_speed(Def::FloatNull)
+	, m_speed               (Def::FloatNull)
 {
 	SetTex(spTex);
 	m_spCrystalTex  = spCrystalTex;
@@ -16,8 +16,9 @@ ScoreCounter::ScoreCounter(const std::shared_ptr<KdTexture>& spTex, const std::s
 
 void ScoreCounter::Init()
 {
-	m_spCrystalCounter = std::make_shared<Counter>();
+	m_spCrystalCounter  = std::make_shared<Counter>();
 	m_spCrystalCounter->SetTex(m_spTex);
+
 	m_spTreasureCounter = std::make_shared<Counter>();
 	m_spTreasureCounter->SetTex(m_spTex);
 
@@ -38,22 +39,22 @@ void ScoreCounter::Init()
 	auto x(parameter[--counter]);
 	auto y(parameter[--counter]);
 
-	m_pos = { x, y };
+	m_pos                = { x,y };
 
 	x = parameter[--counter];
 	y = parameter[--counter];
 
-	m_crystalPos = { x,y };
+	m_crystalPos         = { x,y };
 
 	x = parameter[--counter];
 	y = parameter[--counter];
 
-	m_crystalCounterPos = { x,y };
+	m_crystalCounterPos  = { x,y };
 
 	x = parameter[--counter];
 	y = parameter[--counter];
 
-	m_treasurePos = { x,y };
+	m_treasurePos        = { x,y };
 
 	x = parameter[--counter];
 	y = parameter[--counter];
@@ -62,13 +63,14 @@ void ScoreCounter::Init()
 
 	m_goalPos = { m_pos.x,parameter[--counter]};
 
-	m_speed = parameter[--counter];
+	m_speed   = parameter[--counter];
 }
 
 void ScoreCounter::DrawSprite() noexcept
 {
 	m_spCrystalCounter->DrawSpriteCounter();
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_spCrystalTex, static_cast<int>(m_pos.x + m_crystalPos.x), static_cast<int>(m_pos.y + m_crystalPos.y));
+	
 	m_spTreasureCounter->DrawSpriteCounter();
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_spTreasureTex, static_cast<int>(m_pos.x + m_treasurePos.x), static_cast<int>(m_pos.y + m_treasurePos.y));
 }
@@ -77,7 +79,7 @@ void ScoreCounter::Update()
 {
 	if (m_isTired || m_isLimitOver || m_isComboOver)
 	{
-		auto distance = m_goalPos - m_pos;
+		auto distance(m_goalPos - m_pos);
 		if (std::abs(distance.LengthSquared()) > (m_speed * m_speed))
 		{
 			distance.Normalize();

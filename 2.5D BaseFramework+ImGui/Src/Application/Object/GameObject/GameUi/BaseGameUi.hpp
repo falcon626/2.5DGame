@@ -20,20 +20,21 @@ public:
 
 	inline auto SetTex(const std::shared_ptr<KdTexture>& spTex) noexcept { m_spTex = spTex; }
 
-	auto SetPractice()   noexcept { m_isModePractice   = true; }
-	auto SetSurvival()   noexcept { m_isModeSurvival   = true; }
-	auto SetTimeAttack() noexcept { m_isModeTimeAttack = true; }
-	auto SetTimeLimit()  noexcept { m_isModeTimeLimit  = true; }
+	inline auto SetPractice()   noexcept { m_isModePractice   = true; } // Why Not Bit
+	inline auto SetSurvival()   noexcept { m_isModeSurvival   = true; } // Expansion Possibilities
+	inline auto SetTimeAttack() noexcept { m_isModeTimeAttack = true; } // More Efficiently
+	inline auto SetTimeLimit()  noexcept { m_isModeTimeLimit  = true; } // Growth Potential
 
-	auto SetIsTired(const bool& isTired) noexcept { m_isTired     = isTired; }
-	auto SetIsLimit(const bool& isLimit) noexcept { m_isLimitOver = isLimit; }
-	auto SetIsCombo(const bool& isCombo) noexcept { m_isComboOver = isCombo; }
+	inline auto SetIsTired(const bool& isTired) noexcept { m_isTired     = isTired; }
+	inline auto SetIsLimit(const bool& isLimit) noexcept { m_isLimitOver = isLimit; }
+	inline auto SetIsCombo(const bool& isCombo) noexcept { m_isComboOver = isCombo; }
 
+	// Ius Vitae Necisque
 	auto KillExistence() noexcept { m_isExpired = true; }
 
 protected:
 	std::shared_ptr<KdTexture> m_spTex;
-	Math::Vector2 m_pos;
+	Math::Vector2              m_pos;
 
 	bool m_isModePractice;
 	bool m_isModeSurvival;

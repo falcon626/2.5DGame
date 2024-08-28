@@ -72,14 +72,17 @@ namespace Formula // Convenience Functions
 		}Result;
 		
 		// KdGameObject Only Ray Function
+		template<class T>
 		static auto Ray(Result::R_RayResult rayResult, 
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const Math::Vector3& rayDirection,  const KdCollider::Type& hitType, 
 			const Math::Vector3& startPos,      const float& rayLength, 
-			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL,
-			const bool& isSetMaxLength = false, const float& maxLength      = NULL,
-			const void* pThat = nullptr) noexcept
+			const Math::Vector3& correctionPos, const float& enableStepHigh = static_cast<float>(NULL),
+			const bool& isSetMaxLength = false, const float& maxLength      = static_cast<float>(NULL),
+			const T* pThat = nullptr) noexcept
 		{
+			if(pThat) static_assert(std::is_base_of<KdGameObject, T>::value, "T Must Be Derived From KdGameObject");
+
 			KdCollider::RayInfo rayInfo;
 			rayInfo.m_pos     = startPos;
 			rayInfo.m_dir     = rayDirection;
@@ -115,7 +118,7 @@ namespace Formula // Convenience Functions
 		static auto Ray(KdCollider::RayInfo& rayInfoResult,
 			const Math::Vector3& rayDirection, const KdCollider::Type& hitType,
 			const Math::Vector3& startPos, const float& rayLength,
-			const Math::Vector3& correctionPos, const float& enableStepHigh = NULL) noexcept
+			const Math::Vector3& correctionPos, const float& enableStepHigh = static_cast<float>(NULL)) noexcept
 		{
 			rayInfoResult.m_pos    = startPos;
 			rayInfoResult.m_dir    = rayDirection;
@@ -126,12 +129,15 @@ namespace Formula // Convenience Functions
 		}
 
 		// KdGameObject Only Sphere Function
+		template<class _T>
 		static auto Sphere(Result::R_SphereResult sphereResult,
 			const std::list<std::shared_ptr<KdGameObject>>& objList,
 			const KdCollider::Type& hitType, const Math::Vector3& centerPos, 
 			const float& sphereRadius,       const Math::Vector3& correctionPos,
-			const void* pThat = nullptr) noexcept
+			const _T* pThat = nullptr) noexcept
 		{
+			if (pThat) static_assert(std::is_base_of<KdGameObject, _T>::value, "_T Must Be Derived From KdGameObject");
+
 			KdCollider::SphereInfo sphereInfo;
 			sphereInfo.m_sphere.Center = centerPos + correctionPos;
 			sphereInfo.m_sphere.Radius = sphereRadius;

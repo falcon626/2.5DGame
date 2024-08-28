@@ -20,17 +20,17 @@ public:
 
 private:
 
-	enum class Digit
+	enum class Digit : size_t
 	{
 		Ones,
 		Tens,
 		Hundreds,
-		Max
+		Maximize
 	};
 
 	void Init() override;
 
-	std::array<Math::Rectangle, static_cast<size_t>(Digit::Max)> m_rect;
+	std::array<Math::Rectangle, static_cast<size_t>(Digit::Maximize)> m_rect;
 	std::shared_ptr<Counter> m_spCounter;
 
 	Math::Color m_color;
@@ -38,4 +38,10 @@ private:
 	size_t m_nowComboNum;
 	size_t m_maxComboNum;
 	size_t m_limitComboNum;
+
+	size_t m_firstBorder;
+	size_t m_secondBorder;
+	size_t m_thirdBorder;
+
+	float m_changeColorVal;
 };

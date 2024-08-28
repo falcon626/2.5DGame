@@ -10,7 +10,6 @@
 
 void SelectMode::Init()
 {
-
 	auto spTex(std::make_shared<KdTexture>());
 
 	spTex = RESOURCE.IndexTexture("Texts/practiceMode.png");

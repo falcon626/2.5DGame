@@ -2,7 +2,7 @@
 
 namespace Key // Recommended To Use
 {
-	static thread_local auto _isPush(false);
+	static thread_local auto _isPush{ false };
 	enum Code : size_t // Usable Key
 	{
 		Constant = 0x8000,
@@ -21,5 +21,5 @@ namespace Key // Recommended To Use
 		UnderScore = VK_OEM_102,  Slash     = VK_OEM_2,
 	};
 	// Function
-	static const auto IsPushing(Code keyCode) noexcept { return (GetAsyncKeyState(keyCode) & Code::Constant) != NULL; }
+	static inline auto const IsPushing(const Code& keyCode) noexcept { return (GetAsyncKeyState(keyCode) & Code::Constant) != NULL; }
 }

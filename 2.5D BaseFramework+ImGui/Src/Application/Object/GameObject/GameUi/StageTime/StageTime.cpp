@@ -6,9 +6,9 @@
 #include "../../../../main.h"
 
 StageTime::StageTime(const std::shared_ptr<KdTexture>& spTex) noexcept
-	: m_limitTime(Def::IntNull)
-	, m_time(Def::IntNull)
-	, m_speed(Def::FloatNull)
+	: m_limitTime  (Def::IntNull)
+	, m_time       (Def::IntNull)
+	, m_speed      (Def::FloatNull)
 	, m_isLimitOver(false)
 {
 	SetTex(spTex);
@@ -19,6 +19,7 @@ void StageTime::Init()
 {
 	m_spCounter = std::make_shared<Counter>();
 	m_spTimer   = std::make_shared<Timer>();
+
 	m_spTimer->Start();
 	m_spCounter->SetTex(m_spTex);
 
@@ -74,7 +75,8 @@ void StageTime::Update()
 	if (m_isTired)
 	{
 		m_spTimer->Stop();
-		auto distance = m_tiredEndGoalPos - m_pos;
+
+		auto distance(m_tiredEndGoalPos - m_pos);
 		if (std::abs(distance.LengthSquared()) > (m_speed * m_speed))
 		{
 			distance.Normalize();
@@ -86,7 +88,8 @@ void StageTime::Update()
 	else if (m_isComboOver || m_isLimitOver)
 	{
 		m_spTimer->Stop();
-		auto distance = m_goalPos - m_pos;
+
+		auto distance(m_goalPos - m_pos);
 		if (std::abs(distance.LengthSquared()) > (m_speed * m_speed))
 		{
 			distance.Normalize();

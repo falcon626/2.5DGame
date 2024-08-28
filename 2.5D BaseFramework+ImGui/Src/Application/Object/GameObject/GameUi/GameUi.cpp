@@ -111,7 +111,7 @@ void GameUi::PostUpdate()
 		{
 			auto isLimitOver(m_wpStageTime.lock()->IsLimitOver());
 
-			m_wpGauge.lock()   ->SetIsLimit(isLimitOver);
+			m_wpGauge.lock()       ->SetIsLimit(isLimitOver);
 			m_wpScoreCounter.lock()->SetIsLimit(isLimitOver);
 			m_wpComboCounter.lock()->SetIsLimit(isLimitOver);
 
